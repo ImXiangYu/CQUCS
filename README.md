@@ -114,6 +114,14 @@ Chongqing University (CQU) School of Computer Science (CS). A compilation of res
 - 期末项目
 - 不含实验演示视频（太大了传不了，有需要欢迎联系）
 
+## 硬件综合设计/硬综
+
+- 设计报告
+- 实现笔记
+- 项目源代码
+- 现场加指令说明
+- func_4（时间久远实在不记得这是什么了，保留了）
+
 
 
 
