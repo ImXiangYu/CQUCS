@@ -62,6 +62,21 @@ Chongqing University (CQU) School of Computer Science (CS). A compilation of res
 - 实验源代码
 - 作业
 
+## 软件综合设计
+
+- 答辩PPT（待更新）
+- 源代码（待更新）
+
+## 数据库系统/数据库
+
+- 复习资料
+- 实验报告
+- 实验源代码
+- 实验流程图
+- 课后习题全答案（英）
+
+
+
 
 
 
