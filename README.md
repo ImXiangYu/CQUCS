@@ -93,6 +93,11 @@ Chongqing University (CQU) School of Computer Science (CS). A compilation of res
 - 实验源代码
 - 课程研讨视频（已发B站，看文档获取链接）
 
+## 操作系统/OS
+
+- 作业
+- 复习资料（含期末试题）
+
 
 
 
