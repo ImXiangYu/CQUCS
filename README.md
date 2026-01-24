@@ -19,7 +19,7 @@ Chongqing University (CQU) School of Computer Science (CS). A compilation of res
 
 已包括：
 
-## 程序设计基础
+## 程序设计基础/程设
 
 - 课程Project
 - PTA习题（待更新）
@@ -62,7 +62,7 @@ Chongqing University (CQU) School of Computer Science (CS). A compilation of res
 - 实验源代码
 - 作业
 
-## 软件综合设计
+## 软件综合设计/软综
 
 - 答辩PPT（待更新）
 - 源代码（待更新）
@@ -79,6 +79,13 @@ Chongqing University (CQU) School of Computer Science (CS). A compilation of res
 
 - 实验报告
 - 期末论文（不具备参考性）
+
+## 计算机网络/计网
+
+- 历年真题
+- 作业
+- 阅读报告
+- 实验报告
 
 
 
