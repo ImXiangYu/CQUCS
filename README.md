@@ -42,6 +42,7 @@ Chongqing University (CQU) School of Computer Science (CS). A compilation of res
 - 实验报告
 - 实验源代码
 - 实验指导书
+- 一些vivado学习过程中封装的IP核
 
 ## 计算机组成原理/计组
 
@@ -98,11 +99,20 @@ Chongqing University (CQU) School of Computer Science (CS). A compilation of res
 - 作业
 - 复习资料（含期末试题）
 
+## 大数据架构与技术/大数据
 
+由于分组原因，本人仅做了第四次作业和第四次实验，如有补充欢迎联系
 
+- 作业（仅含第四次作业[阅读报告]）
+- 实验报告（仅含Ex4）
+- 项目源代码
 
+## 移动应用软件开发/鸿蒙
 
-
+- 实验报告
+- 实验源代码（鸿蒙, DevECO）
+- 期末项目
+- 不含实验演示视频（太大了传不了，有需要欢迎联系）
 
 
 
