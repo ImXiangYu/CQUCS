@@ -1,0 +1,254 @@
+
+*** Running vivado
+    with args -log top_FIFO.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_FIFO.tcl
+
+
+
+****** Vivado v2022.1 (64-bit)
+  **** SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+  **** IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+source top_FIFO.tcl -notrace
+Command: synth_design -top top_FIFO -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 18072
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1279.234 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'top_FIFO' [C:/Users/thatcher/Desktop/Project14-3/Project14-3.srcs/sources_1/new/top_FIFO.v:3]
+INFO: [Synth 8-6157] synthesizing module 'divider' [C:/Users/thatcher/Desktop/Project14-3/Project14-3.srcs/sources_1/new/divider.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'divider' (0#1) [C:/Users/thatcher/Desktop/Project14-3/Project14-3.srcs/sources_1/new/divider.v:3]
+INFO: [Synth 8-6157] synthesizing module 'debkey' [C:/Users/thatcher/Desktop/Project14-3/Project14-3.srcs/sources_1/new/debkey.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'debkey' (0#1) [C:/Users/thatcher/Desktop/Project14-3/Project14-3.srcs/sources_1/new/debkey.v:3]
+INFO: [Synth 8-6157] synthesizing module 'FIFO' [C:/Users/thatcher/Desktop/Project14-3/Project14-3.srcs/sources_1/new/FIFO.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'FIFO' (0#1) [C:/Users/thatcher/Desktop/Project14-3/Project14-3.srcs/sources_1/new/FIFO.v:3]
+INFO: [Synth 8-6157] synthesizing module 'transformer' [C:/Users/thatcher/Desktop/Project14-3/Project14-3.srcs/sources_1/new/transformer.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'transformer' (0#1) [C:/Users/thatcher/Desktop/Project14-3/Project14-3.srcs/sources_1/new/transformer.v:3]
+INFO: [Synth 8-6157] synthesizing module 'display7seg' [C:/Users/thatcher/Desktop/Project14-3/Project14-3.srcs/sources_1/new/display7seg.v:3]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/thatcher/Desktop/Project14-3/Project14-3.srcs/sources_1/new/display7seg.v:27]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/thatcher/Desktop/Project14-3/Project14-3.srcs/sources_1/new/display7seg.v:40]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/thatcher/Desktop/Project14-3/Project14-3.srcs/sources_1/new/display7seg.v:53]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/thatcher/Desktop/Project14-3/Project14-3.srcs/sources_1/new/display7seg.v:66]
+INFO: [Synth 8-6155] done synthesizing module 'display7seg' (0#1) [C:/Users/thatcher/Desktop/Project14-3/Project14-3.srcs/sources_1/new/display7seg.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'top_FIFO' (0#1) [C:/Users/thatcher/Desktop/Project14-3/Project14-3.srcs/sources_1/new/top_FIFO.v:3]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1279.234 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1279.234 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1279.234 ; gain = 0.000
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1279.234 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/thatcher/Desktop/Project14-3/Project14-3.srcs/constrs_1/new/FIFO_xdc.xdc]
+WARNING: [Vivado 12-507] No nets matched 'button_IBUF'. [C:/Users/thatcher/Desktop/Project14-3/Project14-3.srcs/constrs_1/new/FIFO_xdc.xdc:1]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/thatcher/Desktop/Project14-3/Project14-3.srcs/constrs_1/new/FIFO_xdc.xdc:1]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+Finished Parsing XDC File [C:/Users/thatcher/Desktop/Project14-3/Project14-3.srcs/constrs_1/new/FIFO_xdc.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/thatcher/Desktop/Project14-3/Project14-3.srcs/constrs_1/new/FIFO_xdc.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_FIFO_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/top_FIFO_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1303.137 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1303.137 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1303.137 ; gain = 23.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1303.137 ; gain = 23.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1303.137 ; gain = 23.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 1303.137 ; gain = 23.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 1     
+	   2 Input    4 Bit       Adders := 5     
+	   2 Input    2 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	                7 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 20    
+	                3 Bit    Registers := 3     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input   32 Bit        Muxes := 1     
+	  14 Input    7 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 2     
+	   4 Input    4 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 2     
+	   2 Input    1 Bit        Muxes := 21    
+	  11 Input    1 Bit        Muxes := 3     
+	  14 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1303.137 ; gain = 23.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:23 . Memory (MB): peak = 1303.137 ; gain = 23.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1303.137 ; gain = 23.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1303.137 ; gain = 23.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:28 ; elapsed = 00:00:28 . Memory (MB): peak = 1303.137 ; gain = 23.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:28 ; elapsed = 00:00:28 . Memory (MB): peak = 1303.137 ; gain = 23.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:28 ; elapsed = 00:00:28 . Memory (MB): peak = 1303.137 ; gain = 23.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:28 ; elapsed = 00:00:28 . Memory (MB): peak = 1303.137 ; gain = 23.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:28 ; elapsed = 00:00:28 . Memory (MB): peak = 1303.137 ; gain = 23.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:28 ; elapsed = 00:00:28 . Memory (MB): peak = 1303.137 ; gain = 23.902
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     2|
+|2     |CARRY4 |    12|
+|3     |LUT1   |     8|
+|4     |LUT2   |     7|
+|5     |LUT3   |     4|
+|6     |LUT4   |    11|
+|7     |LUT5   |    45|
+|8     |LUT6   |    44|
+|9     |MUXF7  |     4|
+|10    |FDCE   |    81|
+|11    |FDRE   |    61|
+|12    |FDSE   |     5|
+|13    |IBUF   |     9|
+|14    |OBUF   |    13|
++------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:28 ; elapsed = 00:00:28 . Memory (MB): peak = 1303.137 ; gain = 23.902
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:19 ; elapsed = 00:00:27 . Memory (MB): peak = 1303.137 ; gain = 0.000
+Synthesis Optimization Complete : Time (s): cpu = 00:00:28 ; elapsed = 00:00:28 . Memory (MB): peak = 1303.137 ; gain = 23.902
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1303.137 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 16 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1303.137 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete, checksum: 45bba86c
+INFO: [Common 17-83] Releasing license: Synthesis
+31 Infos, 2 Warnings, 1 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 1303.137 ; gain = 23.902
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+INFO: [Common 17-1381] The checkpoint 'C:/Users/thatcher/Desktop/Project14-3/Project14-3.runs/synth_1/top_FIFO.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file top_FIFO_utilization_synth.rpt -pb top_FIFO_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri Nov 25 22:38:47 2022...

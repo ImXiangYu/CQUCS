@@ -1,0 +1,19 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/CODES/vivado/Project3-1/Project3-1.sim/sim_1/synth/timing/xsim/design_1_sim_time_synth.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1
+INFO: [VRFC 10-311] analyzing module design_1_andgate_0_0
+INFO: [VRFC 10-311] analyzing module design_1_andgate_0_1
+INFO: [VRFC 10-311] analyzing module design_1_andgate_0_2
+INFO: [VRFC 10-311] analyzing module design_1_andgate_0_3
+INFO: [VRFC 10-311] analyzing module design_1_andgate_1_0
+INFO: [VRFC 10-311] analyzing module design_1_andgate_1_1
+INFO: [VRFC 10-311] analyzing module design_1_andgate_2_0
+INFO: [VRFC 10-311] analyzing module design_1_andgate_2_1
+INFO: [VRFC 10-311] analyzing module design_1_notgate_0_0
+INFO: [VRFC 10-311] analyzing module design_1_notgate_1_0
+INFO: [VRFC 10-311] analyzing module design_1_orgate_0_0
+INFO: [VRFC 10-311] analyzing module design_1_orgate_1_0
+INFO: [VRFC 10-311] analyzing module design_1_orgate_2_0
+INFO: [VRFC 10-311] analyzing module design_1_wrapper
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/CODES/vivado/Project3-1/Project3-1.srcs/sim_1/new/design_1_sim.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module design_1_sim

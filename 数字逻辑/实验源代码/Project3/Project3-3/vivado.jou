@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Thu Apr 13 21:18:41 2023
+# Process ID: 5716
+# Current directory: C:/Users/lyk/Desktop/数字逻辑/实验一/源码/第一次实验/Project3-3
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent24016 C:\Users\lyk\Desktop\数字逻辑\实验一\源码\第一次实验\Project3-3\Project3-3.xpr
+# Log file: C:/Users/lyk/Desktop/数字逻辑/实验一/源码/第一次实验/Project3-3/vivado.log
+# Journal file: C:/Users/lyk/Desktop/数字逻辑/实验一/源码/第一次实验/Project3-3\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/lyk/Desktop/数字逻辑/实验一/源码/第一次实验/Project3-3/Project3-3.xpr
+update_compile_order -fileset sources_1

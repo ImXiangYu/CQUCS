@@ -1,0 +1,36 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Fri Nov 25 19:32:08 2022
+# Process ID: 15368
+# Current directory: C:/Users/thatcher/Desktop/Project14-2-1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent9616 C:\Users\thatcher\Desktop\Project14-2-1\Project14-2-1.xpr
+# Log file: C:/Users/thatcher/Desktop/Project14-2-1/vivado.log
+# Journal file: C:/Users/thatcher/Desktop/Project14-2-1\vivado.jou
+# Running On: Unicx, OS: Windows, CPU Frequency: 2592 MHz, CPU Physical cores: 6, Host memory: 17014 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/thatcher/Desktop/Project14-2-1/Project14-2-1.xpr
+upgrade_project -migrate_output_products
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 6
+wait_on_run impl_1
+open_run impl_1
+set_property constrset constrs_1 [get_runs synth_1]
+set_property constrset constrs_1 [get_runs impl_1]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 6
+wait_on_run impl_1
+close_design
+set_property constrset constrs_2 [get_runs synth_1]
+set_property constrset constrs_2 [get_runs impl_1]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 6
+wait_on_run impl_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+set_property package_pin "" [get_ports [list  we_b]]
+refresh_design
+save_constraints -force
+close_project

@@ -1,0 +1,12 @@
+
+{ 
+    crc :  4676181635839441674  , 
+    ccp_crc :  0  , 
+    cmdline : " --incr --debug typical --relax --mt 2 --maxdelay -L xil_defaultlib -L simprims_ver -L secureip --snapshot Asy_SinglePortRAM_tb_time_synth -transport_int_delays -pulse_r 0 -pulse_int_r 0 -pulse_e 0 -pulse_int_e 0 xil_defaultlib.Asy_SinglePortRAM_tb xil_defaultlib.glbl" , 
+    buildDate : "Apr 18 2022" , 
+    buildTime : "16:05:34" , 
+    linkCmd : "C:\\Xilinx\\Vivado\\2022.1\\data\\..\\tps\\mingw\\6.2.0\\win64.o\\nt\\bin\\gcc.exe -Wa,-W  -O -Wl,--stack,104857600 -o \"xsim.dir/Asy_SinglePortRAM_tb_time_synth/xsimk.exe\"   \"xsim.dir/Asy_SinglePortRAM_tb_time_synth/obj/xsim_0.win64.obj\" \"xsim.dir/Asy_SinglePortRAM_tb_time_synth/obj/xsim_1.win64.obj\" -L\"C:\\Xilinx\\Vivado\\2022.1\\lib\\win64.o\" -lrdi_simulator_kernel   -lrdi_simbridge_kernel" , 
+    aggregate_nets : 
+    [ 
+    ] 
+} 

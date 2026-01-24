@@ -1,0 +1,38 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Sat Nov 26 21:50:13 2022
+# Process ID: 21228
+# Current directory: C:/Users/lyk/Desktop/mathlogic/检查/第三次实验/第三次实验/Project14-1-1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent22832 C:\Users\lyk\Desktop\mathlogic\检查\第三次实验\第三次实验\Project14-1-1\Project-14-1-1.xpr
+# Log file: C:/Users/lyk/Desktop/mathlogic/检查/第三次实验/第三次实验/Project14-1-1/vivado.log
+# Journal file: C:/Users/lyk/Desktop/mathlogic/检查/第三次实验/第三次实验/Project14-1-1\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/lyk/Desktop/mathlogic/检查/第三次实验/第三次实验/Project14-1-1/Project-14-1-1.xpr
+update_compile_order -fileset sources_1
+save_project_as test3-1 C:/Users/lyk/test3-1 -force
+open_hw
+connect_hw_server
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/lyk/test3-1/test3-1.runs/impl_1/top_Syn_SinglePortRAM.bit} [get_hw_devices xc7a35t_0]
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/lyk/test3-1/test3-1.runs/impl_1/top_Syn_SinglePortRAM.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+close_hw
+open_hw
+connect_hw_server
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/lyk/test3-1/test3-1.runs/impl_1/top_Syn_SinglePortRAM.bit} [get_hw_devices xc7a35t_0]
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/lyk/test3-1/test3-1.runs/impl_1/top_Syn_SinglePortRAM.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]

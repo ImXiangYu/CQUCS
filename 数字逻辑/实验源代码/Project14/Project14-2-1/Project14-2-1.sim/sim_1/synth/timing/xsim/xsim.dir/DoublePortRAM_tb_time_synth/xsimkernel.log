@@ -1,0 +1,7 @@
+Running: xsim.dir/DoublePortRAM_tb_time_synth/xsimk.exe -simmode gui -wdb DoublePortRAM_tb_time_synth.wdb -simrunnum 0 -socket 59028
+Design successfully loaded
+Design Loading Memory Usage: 8012 KB (Peak: 8012 KB)
+Design Loading CPU Usage: 15 ms
+Simulation completed
+Simulation Memory Usage: 8572 KB (Peak: 8572 KB)
+Simulation CPU Usage: 15 ms

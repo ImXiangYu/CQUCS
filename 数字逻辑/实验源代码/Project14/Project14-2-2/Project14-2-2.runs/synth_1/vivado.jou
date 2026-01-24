@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Fri Nov 25 21:51:25 2022
+# Process ID: 16408
+# Current directory: C:/Users/thatcher/Desktop/Project14-2-2/Project14-2-2.runs/synth_1
+# Command line: vivado.exe -log top_Asy_DoublePortRAM.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_Asy_DoublePortRAM.tcl
+# Log file: C:/Users/thatcher/Desktop/Project14-2-2/Project14-2-2.runs/synth_1/top_Asy_DoublePortRAM.vds
+# Journal file: C:/Users/thatcher/Desktop/Project14-2-2/Project14-2-2.runs/synth_1\vivado.jou
+# Running On: Unicx, OS: Windows, CPU Frequency: 2592 MHz, CPU Physical cores: 6, Host memory: 17014 MB
+#-----------------------------------------------------------
+source top_Asy_DoublePortRAM.tcl -notrace

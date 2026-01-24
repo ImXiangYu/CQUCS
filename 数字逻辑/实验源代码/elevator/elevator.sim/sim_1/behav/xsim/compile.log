@@ -1,0 +1,6 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Code_Field/Code_vivado/elevator/elevator.srcs/sources_1/new/clock_div.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_div
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Code_Field/Code_vivado/elevator/elevator.srcs/sources_1/new/elevator.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module elevator
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Code_Field/Code_vivado/elevator/elevator.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl

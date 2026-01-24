@@ -1,0 +1,10 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../Project14-2-2.srcs/sources_1/new/Asy_DoublePortRAM.v" \
+"../../../../Project14-2-2.srcs/sim_1/new/DoublePortRAM_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

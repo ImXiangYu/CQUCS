@@ -1,0 +1,67 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Sun Dec 12 16:16:15 2021
+# Process ID: 20032
+# Current directory: D:/CODES/vivado/Project15
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent31116 D:\CODES\vivado\Project15\Project15.xpr
+# Log file: D:/CODES/vivado/Project15/vivado.log
+# Journal file: D:/CODES/vivado/Project15\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/CODES/vivado/Project15/Project15.xpr
+update_compile_order -fileset sources_1
+update_compile_order -fileset sim_1
+export_ip_user_files -of_objects  [get_files D:/CODES/vivado/Project15/Project15.srcs/sources_1/new/Detector1011.v] -no_script -reset -force -quiet
+remove_files  D:/CODES/vivado/Project15/Project15.srcs/sources_1/new/Detector1011.v
+export_ip_user_files -of_objects  [get_files D:/CODES/vivado/Project15/Project15.srcs/sources_1/new/top_Detector1011.v] -no_script -reset -force -quiet
+remove_files  D:/CODES/vivado/Project15/Project15.srcs/sources_1/new/top_Detector1011.v
+add_files -norecurse {D:/CODES/vivado/Project15/Project15.srcs/sources_1/new/Detector1101.v D:/CODES/vivado/Project15/Project15.srcs/sources_1/new/top_Detector1101.v}
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+launch_simulation
+source Detector1101_tb.tcl
+reset_run synth_1
+launch_runs synth_1 -jobs 16
+wait_on_run synth_1
+launch_runs impl_1 -jobs 16
+wait_on_run impl_1
+open_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+open_hw
+connect_hw_server
+open_hw_target
+set_property PROGRAM.FILE {D:/CODES/vivado/Project15/Project15.runs/impl_1/top_Detector1101.bit} [get_hw_devices xc7a35t_0]
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {D:/CODES/vivado/Project15/Project15.runs/impl_1/top_Detector1101.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+synth_design -rtl -name rtl_1
+close_sim
+launch_simulation
+source Detector1101_tb.tcl
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top PISO_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+launch_simulation
+source PISO_tb.tcl
+relaunch_sim
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top SIPO_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+launch_simulation
+launch_simulation
+source SIPO_tb.tcl

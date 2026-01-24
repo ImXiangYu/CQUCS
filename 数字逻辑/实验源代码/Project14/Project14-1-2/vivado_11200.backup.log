@@ -1,0 +1,68 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Mon Dec  6 00:09:04 2021
+# Process ID: 11200
+# Current directory: C:/Users/lenovo/Desktop/Project14/Project14-1-2
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent14356 C:\Users\lenovo\Desktop\Project14\Project14-1-2\Project14-1-2.xpr
+# Log file: C:/Users/lenovo/Desktop/Project14/Project14-1-2/vivado.log
+# Journal file: C:/Users/lenovo/Desktop/Project14/Project14-1-2\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/lenovo/Desktop/Project14/Project14-1-2/Project14-1-2.xpr
+INFO: [Project 1-313] Project file moved from 'D:/CODES/vivado/Project14-1-2' since last save.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2018.3/data/ip'.
+update_compile_order -fileset sources_1
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory C:/Users/lenovo/Desktop/Project14/Project14-1-2/Project14-1-2.runs/synth_1
+
+launch_runs synth_1 -jobs 16
+[Mon Dec  6 00:11:24 2021] Launched synth_1...
+Run output will be captured here: C:/Users/lenovo/Desktop/Project14/Project14-1-2/Project14-1-2.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 16
+[Mon Dec  6 00:12:34 2021] Launched impl_1...
+Run output will be captured here: C:/Users/lenovo/Desktop/Project14/Project14-1-2/Project14-1-2.runs/impl_1/runme.log
+open_run impl_1
+INFO: [Netlist 29-17] Analyzing 12 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.3
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.036 . Memory (MB): peak = 1565.531 ; gain = 0.000
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.036 . Memory (MB): peak = 1565.531 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1565.531 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+open_run: Time (s): cpu = 00:00:21 ; elapsed = 00:00:14 . Memory (MB): peak = 1727.777 ; gain = 965.176
+WARNING: [Timing 38-313] There are no user specified timing constraints. Timing constraints are needed for proper timing analysis.
+open_run synth_1 -name synth_1
+Design is defaulting to impl run constrset: constrs_2
+Design is defaulting to synth run part: xc7a35tcpg236-1
+INFO: [Netlist 29-17] Analyzing 12 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.3
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [C:/Users/lenovo/Desktop/Project14/Project14-1-2/Project14-1-2.srcs/constrs_2/new/Asy_SinglePortRAM_xdc.xdc]
+Finished Parsing XDC File [C:/Users/lenovo/Desktop/Project14/Project14-1-2/Project14-1-2.srcs/constrs_2/new/Asy_SinglePortRAM_xdc.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1799.363 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+exit
+INFO: [Common 17-206] Exiting Vivado at Mon Dec  6 00:14:49 2021...

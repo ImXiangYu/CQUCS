@@ -1,0 +1,17 @@
+Vivado Simulator v2022.1
+Copyright 1986-1999, 2001-2022 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2022.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot DoublePortRAM_tb_behav xil_defaultlib.DoublePortRAM_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-3091] actual bit length 4 differs from formal bit length 3 for port 'addr_a' [C:/Users/thatcher/Desktop/Project14-2-2/Project14-2-2.srcs/sim_1/new/DoublePortRAM_tb.v:16]
+WARNING: [VRFC 10-3091] actual bit length 2 differs from formal bit length 4 for port 'din_a' [C:/Users/thatcher/Desktop/Project14-2-2/Project14-2-2.srcs/sim_1/new/DoublePortRAM_tb.v:17]
+WARNING: [VRFC 10-3091] actual bit length 2 differs from formal bit length 4 for port 'dout_a' [C:/Users/thatcher/Desktop/Project14-2-2/Project14-2-2.srcs/sim_1/new/DoublePortRAM_tb.v:19]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.Asy_DoublePortRAM
+Compiling module xil_defaultlib.DoublePortRAM_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot DoublePortRAM_tb_behav

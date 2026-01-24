@@ -1,0 +1,16 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Fri Nov 25 22:50:30 2022
+# Process ID: 15736
+# Current directory: C:/Users/thatcher/Desktop/Digital Logic Lab/实验Submit/第三次实验/Project14-1-1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent16796 C:\Users\thatcher\Desktop\Digital Logic Lab\实验Submit\第三次实验\Project14-1-1\Project-14-1-1.xpr
+# Log file: C:/Users/thatcher/Desktop/Digital Logic Lab/实验Submit/第三次实验/Project14-1-1/vivado.log
+# Journal file: C:/Users/thatcher/Desktop/Digital Logic Lab/实验Submit/第三次实验/Project14-1-1\vivado.jou
+# Running On: Unicx, OS: Windows, CPU Frequency: 2592 MHz, CPU Physical cores: 6, Host memory: 17014 MB
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/thatcher/Desktop/Digital Logic Lab/实验Submit/第三次实验/Project14-1-1/Project-14-1-1.xpr}
+update_compile_order -fileset sources_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1

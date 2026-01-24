@@ -1,0 +1,57 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Mon Mar 27 19:11:03 2023
+# Process ID: 14200
+# Current directory: C:/Users/lyk/Desktop/数字逻辑/实验四/源码/第四次实验/Project15
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent5376 C:\Users\lyk\Desktop\数字逻辑\实验四\源码\第四次实验\Project15\Project15.xpr
+# Log file: C:/Users/lyk/Desktop/数字逻辑/实验四/源码/第四次实验/Project15/vivado.log
+# Journal file: C:/Users/lyk/Desktop/数字逻辑/实验四/源码/第四次实验/Project15\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/lyk/Desktop/数字逻辑/实验四/源码/第四次实验/Project15/Project15.xpr
+INFO: [Project 1-313] Project file moved from 'C:/Users/thatcher/Desktop/Project15' since last save.
+ERROR: [Project 1-208] No val for DA Elab Attr
+Scanning sources...
+Finished scanning sources
+CRITICAL WARNING: [Project 1-532] XML ERROR: Project Option SimulatorInstallDirModelSim has no valid value
+CRITICAL WARNING: [Project 1-532] XML ERROR: Project Option SimulatorInstallDirQuesta has no valid value
+CRITICAL WARNING: [Project 1-532] XML ERROR: Project Option SimulatorInstallDirXcelium has no valid value
+CRITICAL WARNING: [Project 1-532] XML ERROR: Project Option SimulatorInstallDirVCS has no valid value
+CRITICAL WARNING: [Project 1-532] XML ERROR: Project Option SimulatorInstallDirRiviera has no valid value
+CRITICAL WARNING: [Project 1-532] XML ERROR: Project Option SimulatorInstallDirActiveHdl has no valid value
+CRITICAL WARNING: [Project 1-532] XML ERROR: Project Option SimulatorGccInstallDirModelSim has no valid value
+CRITICAL WARNING: [Project 1-532] XML ERROR: Project Option SimulatorGccInstallDirQuesta has no valid value
+CRITICAL WARNING: [Project 1-532] XML ERROR: Project Option SimulatorGccInstallDirXcelium has no valid value
+CRITICAL WARNING: [Project 1-532] XML ERROR: Project Option SimulatorGccInstallDirVCS has no valid value
+CRITICAL WARNING: [Project 1-532] XML ERROR: Project Option SimulatorGccInstallDirRiviera has no valid value
+CRITICAL WARNING: [Project 1-532] XML ERROR: Project Option SimulatorGccInstallDirActiveHdl has no valid value
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorVersionXsim
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorVersionModelSim
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorVersionQuesta
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorVersionXcelium
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorVersionVCS
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorVersionRiviera
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorVersionActiveHdl
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorGccVersionXsim
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorGccVersionModelSim
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorGccVersionQuesta
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorGccVersionXcelium
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorGccVersionVCS
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorGccVersionRiviera
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorGccVersionActiveHdl
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name IPDefaultOutputPath
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name EnableResourceEstimation
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name DcpsUptoDate
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name ClassicSocBoot
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name LocalIPRepoLeafDirName
+WARNING: [Project 1-231] Project 'Project15.xpr' was created with a future version and may or may not perform reliably with this version of Vivado. It has been opened in read-only mode for the protection of unrecognized data. Use 'File | Save Project As...' if you wish to alter a copy of the project.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/vivado/Vivado/2018.3/data/ip'.
+ERROR: [Common 17-39] 'open_project' failed due to earlier errors.
+update_compile_order -fileset sources_1
+save_project_as project_1 C:/Users/lyk/project_1 -force
+exit
+INFO: [Common 17-206] Exiting Vivado at Mon Mar 27 19:17:28 2023...

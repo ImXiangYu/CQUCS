@@ -1,0 +1,1 @@
+-wto "f436834c54f04d4a97546800470cc40a" --incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "unisims_ver" -L "unimacro_ver" -L "secureip" --snapshot "Ayn_SinglePortRAM_tb_behav" "xil_defaultlib.Ayn_SinglePortRAM_tb" "xil_defaultlib.glbl" -log "elaborate.log" 

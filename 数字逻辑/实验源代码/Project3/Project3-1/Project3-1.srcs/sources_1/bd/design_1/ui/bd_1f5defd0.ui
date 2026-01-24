@@ -1,0 +1,51 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.628671",
+   "Default View_TopLeft":"-366,-546",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:10.0 non-TLS-threadsafe
+#  -string -flagsOSRD
+preplace port port-id_S1 -pg 1 -lvl 0 -x -300 -y -240 -defaultsOSRD
+preplace port port-id_S2 -pg 1 -lvl 0 -x -300 -y -50 -defaultsOSRD
+preplace port port-id_a -pg 1 -lvl 0 -x -300 -y -430 -defaultsOSRD
+preplace port port-id_b -pg 1 -lvl 0 -x -300 -y -130 -defaultsOSRD
+preplace port port-id_c -pg 1 -lvl 0 -x -300 -y 20 -defaultsOSRD
+preplace port port-id_d -pg 1 -lvl 0 -x -300 -y 130 -defaultsOSRD
+preplace portBus e -pg 1 -lvl 6 -x 980 -y -80 -defaultsOSRD
+preplace inst andgate_0 -pg 1 -lvl 3 -x 510 -y -320 -defaultsOSRD
+preplace inst andgate_3 -pg 1 -lvl 3 -x 510 -y -200 -defaultsOSRD
+preplace inst andgate_4 -pg 1 -lvl 3 -x 510 -y -80 -defaultsOSRD
+preplace inst andgate_5 -pg 1 -lvl 3 -x 510 -y 60 -defaultsOSRD
+preplace inst andgate_1 -pg 1 -lvl 2 -x 170 -y -360 -defaultsOSRD
+preplace inst andgate_2 -pg 1 -lvl 2 -x 170 -y -240 -defaultsOSRD
+preplace inst andgate_6 -pg 1 -lvl 2 -x 170 -y -60 -defaultsOSRD
+preplace inst andgate_7 -pg 1 -lvl 2 -x 170 -y 90 -defaultsOSRD
+preplace inst notgate_0 -pg 1 -lvl 1 -x -40 -y -50 -defaultsOSRD
+preplace inst notgate_1 -pg 1 -lvl 1 -x -40 -y -240 -defaultsOSRD
+preplace inst orgate_0 -pg 1 -lvl 4 -x 690 -y -210 -defaultsOSRD
+preplace inst orgate_1 -pg 1 -lvl 4 -x 690 -y -70 -defaultsOSRD
+preplace inst orgate_2 -pg 1 -lvl 5 -x 870 -y -80 -defaultsOSRD
+preplace netloc S1_1 1 0 2 -280 -180 70
+preplace netloc S2_1 1 0 2 -280 -110 40
+preplace netloc notgate_1_b 1 1 1 60 -370n
+preplace netloc notgate_0_b 1 1 1 50 -350n
+preplace netloc andgate_1_c 1 2 1 250 -360n
+preplace netloc a_1 1 0 3 NJ -430 NJ -430 260
+preplace netloc andgate_0_c 1 3 1 590 -320n
+preplace netloc andgate_3_c 1 3 1 N -200
+preplace netloc andgate_4_c 1 3 1 N -80
+preplace netloc andgate_5_c 1 3 1 590 -60n
+preplace netloc orgate_0_c 1 4 1 770 -210n
+preplace netloc orgate_1_c 1 4 1 N -70
+preplace netloc orgate_2_c 1 5 1 N -80
+preplace netloc andgate_2_c 1 2 1 260 -240n
+preplace netloc andgate_6_c 1 2 1 250 -90n
+preplace netloc andgate_7_c 1 2 1 250 50n
+preplace netloc d_1 1 0 3 NJ 130 50J 160 260
+preplace netloc c_1 1 0 3 NJ 20 NJ 20 260
+preplace netloc b_1 1 0 3 NJ -130 NJ -130 250
+levelinfo -pg 1 -300 -40 170 510 690 870 980
+pagesize -pg 1 -db -bbox -sgen -370 -450 1070 230
+"
+}
+0

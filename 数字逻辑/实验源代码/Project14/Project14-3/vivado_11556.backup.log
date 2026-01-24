@@ -1,0 +1,323 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Thu Dec  2 15:47:51 2021
+# Process ID: 11556
+# Current directory: D:/CODES/vivado/Project14-3
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent26304 D:\CODES\vivado\Project14-3\Project14-3.xpr
+# Log file: D:/CODES/vivado/Project14-3/vivado.log
+# Journal file: D:/CODES/vivado/Project14-3\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/CODES/vivado/Project14-3/Project14-3.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2018.3/data/ip'.
+update_compile_order -fileset sources_1
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'D:/CODES/vivado/Project14-3/Project14-3.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'FIFO_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'D:/CODES/vivado/Project14-3/Project14-3.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj FIFO_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/CODES/vivado/Project14-3/Project14-3.srcs/sources_1/new/FIFO.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module FIFO
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/CODES/vivado/Project14-3/Project14-3.srcs/sim_1/new/FIFO_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module FIFO_tb
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'D:/CODES/vivado/Project14-3/Project14-3.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe -wto 430d027a9159436f81aa52e40d2e896e --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot FIFO_tb_behav xil_defaultlib.FIFO_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.FIFO
+Compiling module xil_defaultlib.FIFO_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot FIFO_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'D:/CODES/vivado/Project14-3/Project14-3.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "FIFO_tb_behav -key {Behavioral:sim_1:Functional:FIFO_tb} -tclbatch {FIFO_tb.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+source FIFO_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'FIFO_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+current_wave_config {Untitled 1}
+Untitled 1
+add_wave {{/FIFO_tb/F/NUM}} 
+current_wave_config {Untitled 1}
+Untitled 1
+add_wave {{/FIFO_tb/F/FIFO}} 
+relaunch_sim
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'D:/CODES/vivado/Project14-3/Project14-3.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'FIFO_tb' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'D:/CODES/vivado/Project14-3/Project14-3.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj FIFO_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/CODES/vivado/Project14-3/Project14-3.srcs/sources_1/new/FIFO.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module FIFO
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/CODES/vivado/Project14-3/Project14-3.srcs/sim_1/new/FIFO_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module FIFO_tb
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'D:/CODES/vivado/Project14-3/Project14-3.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'D:/CODES/vivado/Project14-3/Project14-3.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe -wto 430d027a9159436f81aa52e40d2e896e --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot FIFO_tb_behav xil_defaultlib.FIFO_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.FIFO
+Compiling module xil_defaultlib.FIFO_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot FIFO_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory D:/CODES/vivado/Project14-3/Project14-3.runs/synth_1
+
+launch_runs synth_1 -jobs 8
+[Thu Dec  2 15:51:11 2021] Launched synth_1...
+Run output will be captured here: D:/CODES/vivado/Project14-3/Project14-3.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 8
+[Thu Dec  2 15:51:55 2021] Launched impl_1...
+Run output will be captured here: D:/CODES/vivado/Project14-3/Project14-3.runs/impl_1/runme.log
+open_run impl_1
+INFO: [Netlist 29-17] Analyzing 16 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.3
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.045 . Memory (MB): peak = 1066.547 ; gain = 0.000
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.045 . Memory (MB): peak = 1066.547 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1066.598 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+open_run: Time (s): cpu = 00:00:11 ; elapsed = 00:00:07 . Memory (MB): peak = 1203.332 ; gain = 218.594
+WARNING: [Timing 38-313] There are no user specified timing constraints. Timing constraints are needed for proper timing analysis.
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory D:/CODES/vivado/Project14-3/Project14-3.runs/synth_1
+
+launch_runs synth_1 -jobs 8
+[Thu Dec  2 15:53:38 2021] Launched synth_1...
+Run output will be captured here: D:/CODES/vivado/Project14-3/Project14-3.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 8
+[Thu Dec  2 15:54:05 2021] Launched impl_1...
+Run output will be captured here: D:/CODES/vivado/Project14-3/Project14-3.runs/impl_1/runme.log
+refresh_design
+INFO: [Netlist 29-17] Analyzing 4 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.3
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.029 . Memory (MB): peak = 1716.199 ; gain = 0.000
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.029 . Memory (MB): peak = 1716.199 ; gain = 0.000
+WARNING: [Timing 38-313] There are no user specified timing constraints. Timing constraints are needed for proper timing analysis.
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory D:/CODES/vivado/Project14-3/Project14-3.runs/synth_1
+
+launch_runs synth_1 -jobs 8
+[Thu Dec  2 15:56:17 2021] Launched synth_1...
+Run output will be captured here: D:/CODES/vivado/Project14-3/Project14-3.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 8
+[Thu Dec  2 16:04:28 2021] Launched impl_1...
+Run output will be captured here: D:/CODES/vivado/Project14-3/Project14-3.runs/impl_1/runme.log
+refresh_design
+INFO: [Netlist 29-17] Analyzing 16 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.3
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.039 . Memory (MB): peak = 1843.371 ; gain = 0.000
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.039 . Memory (MB): peak = 1843.371 ; gain = 0.000
+WARNING: [Timing 38-313] There are no user specified timing constraints. Timing constraints are needed for proper timing analysis.
+set_property IOSTANDARD LVCMOS33 [get_ports [list {an[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {an[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {an[1]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {an[2]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {an[3]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list button]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list clk]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {data_in[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {data_in[1]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {data_in[2]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {data_in[3]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {display[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {display[1]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {display[2]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {display[3]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {display[4]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {display[5]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {display[6]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list empty]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list full]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list rd_en]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list rst]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list wr_en]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list empty]]
+place_ports wr_en R2
+startgroup
+set_property package_pin "" [get_ports [list  {data_in[0]}]]
+place_ports rst U18
+endgroup
+place_ports rd_en T1
+place_ports full L1
+place_ports empty P1
+place_ports {display[6]} W7
+place_ports {display[5]} W6
+place_ports {display[4]} U8
+place_ports {display[3]} V8
+place_ports {display[2]} U5
+place_ports {display[1]} V5
+place_ports {display[0]} U7
+place_ports {data_in[3]} U1
+place_ports {data_in[2]} W2
+place_ports {data_in[1]} R3
+place_ports {data_in[0]} T2
+place_ports clk W5
+place_ports button V17
+place_ports {an[3]} W4
+place_ports {an[2]} V4
+place_ports {an[1]} U4
+place_ports {an[0]} U2
+file mkdir D:/CODES/vivado/Project14-3/Project14-3.srcs/constrs_1/new
+close [ open D:/CODES/vivado/Project14-3/Project14-3.srcs/constrs_1/new/FIFO_xdc.xdc w ]
+add_files -fileset constrs_1 D:/CODES/vivado/Project14-3/Project14-3.srcs/constrs_1/new/FIFO_xdc.xdc
+set_property target_constrs_file D:/CODES/vivado/Project14-3/Project14-3.srcs/constrs_1/new/FIFO_xdc.xdc [current_fileset -constrset]
+save_constraints -force
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1888.398 ; gain = 0.000
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory D:/CODES/vivado/Project14-3/Project14-3.runs/synth_1
+
+launch_runs synth_1 -jobs 16
+[Thu Dec  2 16:19:20 2021] Launched synth_1...
+Run output will be captured here: D:/CODES/vivado/Project14-3/Project14-3.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 10
+[Thu Dec  2 16:19:48 2021] Launched impl_1...
+Run output will be captured here: D:/CODES/vivado/Project14-3/Project14-3.runs/impl_1/runme.log
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory D:/CODES/vivado/Project14-3/Project14-3.runs/synth_1
+
+launch_runs synth_1 -jobs 10
+[Thu Dec  2 16:23:37 2021] Launched synth_1...
+Run output will be captured here: D:/CODES/vivado/Project14-3/Project14-3.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 10
+[Thu Dec  2 16:24:12 2021] Launched impl_1...
+Run output will be captured here: D:/CODES/vivado/Project14-3/Project14-3.runs/impl_1/runme.log
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory D:/CODES/vivado/Project14-3/Project14-3.runs/synth_1
+
+launch_runs synth_1 -jobs 10
+[Thu Dec  2 16:25:43 2021] Launched synth_1...
+Run output will be captured here: D:/CODES/vivado/Project14-3/Project14-3.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 10
+[Thu Dec  2 16:26:16 2021] Launched impl_1...
+Run output will be captured here: D:/CODES/vivado/Project14-3/Project14-3.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 10
+[Thu Dec  2 16:27:03 2021] Launched impl_1...
+Run output will be captured here: D:/CODES/vivado/Project14-3/Project14-3.runs/impl_1/runme.log
+open_hw
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210183B03CC8A
+set_property PROGRAM.FILE {D:/CODES/vivado/Project14-3/Project14-3.runs/impl_1/top_FIFO.bit} [get_hw_devices xc7a35t_0]
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {D:/CODES/vivado/Project14-3/Project14-3.runs/impl_1/top_FIFO.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {D:/CODES/vivado/Project14-3/Project14-3.runs/impl_1/top_FIFO.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {D:/CODES/vivado/Project14-3/Project14-3.runs/impl_1/top_FIFO.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory D:/CODES/vivado/Project14-3/Project14-3.runs/synth_1
+
+launch_runs synth_1 -jobs 10
+[Thu Dec  2 16:49:25 2021] Launched synth_1...
+Run output will be captured here: D:/CODES/vivado/Project14-3/Project14-3.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 10
+[Thu Dec  2 16:49:56 2021] Launched impl_1...
+Run output will be captured here: D:/CODES/vivado/Project14-3/Project14-3.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 10
+[Thu Dec  2 16:52:09 2021] Launched impl_1...
+Run output will be captured here: D:/CODES/vivado/Project14-3/Project14-3.runs/impl_1/runme.log
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {D:/CODES/vivado/Project14-3/Project14-3.runs/impl_1/top_FIFO.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/210183B03CC8A
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+exit
+INFO: [Common 17-206] Exiting Vivado at Thu Dec  2 16:58:34 2021...

@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Mon Dec  4 23:24:39 2023
+# Process ID: 21520
+# Current directory: C:/Users/26708/Desktop/数字逻辑/实验二/第二次实验陈泽超源码/第二次实验/Project7
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent23104 C:\Users\26708\Desktop\数字逻辑\实验二\第二次实验陈泽超源码\第二次实验\Project7\Project7.xpr
+# Log file: C:/Users/26708/Desktop/数字逻辑/实验二/第二次实验陈泽超源码/第二次实验/Project7/vivado.log
+# Journal file: C:/Users/26708/Desktop/数字逻辑/实验二/第二次实验陈泽超源码/第二次实验/Project7\vivado.jou
+# Running On: XiangYu-Lenovo, OS: Windows, CPU Frequency: 2688 MHz, CPU Physical cores: 14, Host memory: 16890 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/26708/Desktop/数字逻辑/实验二/第二次实验陈泽超源码/第二次实验/Project7/Project7.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+source clock_tb.tcl
+set_property ip.user_files_dir C:/Users/26708/Desktop/Project7/Project7.ip_user_files [current_project]
+set_property -name {xsim.simulate.runtime} -value {100000ns} -objects [get_filesets sim_1]
+close_sim
+launch_simulation
+source clock_tb.tcl
+close_sim

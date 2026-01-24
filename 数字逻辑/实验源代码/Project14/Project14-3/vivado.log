@@ -1,0 +1,104 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Sat Nov 26 22:01:46 2022
+# Process ID: 7156
+# Current directory: C:/Users/lyk/Desktop/mathlogic/检查/第三次实验/第三次实验/Project14-3
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent23204 C:\Users\lyk\Desktop\mathlogic\检查\第三次实验\第三次实验\Project14-3\Project14-3.xpr
+# Log file: C:/Users/lyk/Desktop/mathlogic/检查/第三次实验/第三次实验/Project14-3/vivado.log
+# Journal file: C:/Users/lyk/Desktop/mathlogic/检查/第三次实验/第三次实验/Project14-3\vivado.jou
+#-----------------------------------------------------------
+start_gui
+oopen_project C:/Users/lyk/Desktop/mathlogic/检查/第三次实验/第三次实验/Project14-3/Project14-3.xpr
+INFO: [Project 1-313] Project file moved from 'C:/Users/thatcher/Desktop/Project14-3' since last save.
+ERROR: [Project 1-208] No val for DA Elab Attr
+Scanning sources...
+Finished scanning sources
+CRITICAL WARNING: [Project 1-532] XML ERROR: Project Option SimulatorInstallDirModelSim has no valid value
+CRITICAL WARNING: [Project 1-532] XML ERROR: Project Option SimulatorInstallDirQuesta has no valid value
+CRITICAL WARNING: [Project 1-532] XML ERROR: Project Option SimulatorInstallDirXcelium has no valid value
+CRITICAL WARNING: [Project 1-532] XML ERROR: Project Option SimulatorInstallDirVCS has no valid value
+CRITICAL WARNING: [Project 1-532] XML ERROR: Project Option SimulatorInstallDirRiviera has no valid value
+CRITICAL WARNING: [Project 1-532] XML ERROR: Project Option SimulatorInstallDirActiveHdl has no valid value
+CRITICAL WARNING: [Project 1-532] XML ERROR: Project Option SimulatorGccInstallDirModelSim has no valid value
+CRITICAL WARNING: [Project 1-532] XML ERROR: Project Option SimulatorGccInstallDirQuesta has no valid value
+CRITICAL WARNING: [Project 1-532] XML ERROR: Project Option SimulatorGccInstallDirXcelium has no valid value
+CRITICAL WARNING: [Project 1-532] XML ERROR: Project Option SimulatorGccInstallDirVCS has no valid value
+CRITICAL WARNING: [Project 1-532] XML ERROR: Project Option SimulatorGccInstallDirRiviera has no valid value
+CRITICAL WARNING: [Project 1-532] XML ERROR: Project Option SimulatorGccInstallDirActiveHdl has no valid value
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorVersionXsim
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorVersionModelSim
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorVersionQuesta
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorVersionXcelium
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorVersionVCS
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorVersionRiviera
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorVersionActiveHdl
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorGccVersionXsim
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorGccVersionModelSim
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorGccVersionQuesta
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorGccVersionXcelium
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorGccVersionVCS
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorGccVersionRiviera
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name SimulatorGccVersionActiveHdl
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name IPDefaultOutputPath
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name EnableResourceEstimation
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name DcpsUptoDate
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name ClassicSocBoot
+CRITICAL WARNING: [Project 1-505] Unrecognized Option Name LocalIPRepoLeafDirName
+WARNING: [Project 1-231] Project 'Project14-3.xpr' was created with a future version and may or may not perform reliably with this version of Vivado. It has been opened in read-only mode for the protection of unrecognized data. Use 'File | Save Project As...' if you wish to alter a copy of the project.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/vivado/Vivado/2018.3/data/ip'.
+ERROR: [Common 17-39] 'open_project' failed due to earlier errors.
+update_compile_order -fileset sources_1
+exit
+INFO: [Common 17-206] Exiting Vivado at Sat Nov 26 22:05:53 2022...
+h_1
+launch_runs impl_1 -to_step write_bitstream -jobs 10
+[Sat Nov 26 22:02:17 2022] Launched synth_1...
+Run output will be captured here: C:/Users/lyk/test3-5/test3-5.runs/synth_1/runme.log
+[Sat Nov 26 22:02:17 2022] Launched impl_1...
+Run output will be captured here: C:/Users/lyk/test3-5/test3-5.runs/impl_1/runme.log
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2018.3
+  **** Build date : Dec  7 2018-00:40:27
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210183A89C32A
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+close_hw
+open_hw
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2018.3
+  **** Build date : Dec  7 2018-00:40:27
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210183A89C32A
+set_property PROGRAM.FILE {C:/Users/lyk/test3-5/test3-5.runs/impl_1/top_FIFO.bit} [get_hw_devices xc7a35t_0]
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/lyk/test3-5/test3-5.runs/impl_1/top_FIFO.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+exit
+INFO: [Common 17-206] Exiting Vivado at Sat Nov 26 22:05:43 2022...

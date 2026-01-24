@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Webtalk v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Mon Dec  6 00:36:21 2021
+# Process ID: 25920
+# Current directory: C:/Users/lenovo/Desktop/Project14/Project14-3/Project14-3.sim/sim_1/behav/xsim
+# Command line: wbtcv.exe -mode batch -source C:/Users/lenovo/Desktop/Project14/Project14-3/Project14-3.sim/sim_1/behav/xsim/xsim.dir/FIFO_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: C:/Users/lenovo/Desktop/Project14/Project14-3/Project14-3.sim/sim_1/behav/xsim/webtalk.log
+# Journal file: C:/Users/lenovo/Desktop/Project14/Project14-3/Project14-3.sim/sim_1/behav/xsim\webtalk.jou
+#-----------------------------------------------------------
+source C:/Users/lenovo/Desktop/Project14/Project14-3/Project14-3.sim/sim_1/behav/xsim/xsim.dir/FIFO_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Mon Dec  6 00:36:22 2021...

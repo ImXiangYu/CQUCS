@@ -1,0 +1,30 @@
+Vivado Simulator 2018.3
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/xelab.exe -wto b7a18962fad140b590719fc2c48fdcd1 --incr --debug typical --relax --mt 2 --maxdelay -L xil_defaultlib -L simprims_ver -L secureip --snapshot design_1_sim_time_synth -transport_int_delays -pulse_r 0 -pulse_int_r 0 -pulse_e 0 -pulse_int_e 0 xil_defaultlib.design_1_sim xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module simprims_ver.x_lut2_mux4
+Compiling module simprims_ver.LUT2
+Compiling module xil_defaultlib.design_1_andgate_0_0
+Compiling module xil_defaultlib.design_1_andgate_1_0
+Compiling module xil_defaultlib.design_1_andgate_1_1
+Compiling module xil_defaultlib.design_1_andgate_0_1
+Compiling module xil_defaultlib.design_1_andgate_0_2
+Compiling module xil_defaultlib.design_1_andgate_0_3
+Compiling module xil_defaultlib.design_1_andgate_2_0
+Compiling module xil_defaultlib.design_1_andgate_2_1
+Compiling module simprims_ver.x_lut1_mux2
+Compiling module simprims_ver.LUT1
+Compiling module xil_defaultlib.design_1_notgate_0_0
+Compiling module xil_defaultlib.design_1_notgate_1_0
+Compiling module xil_defaultlib.design_1_orgate_0_0
+Compiling module xil_defaultlib.design_1_orgate_1_0
+Compiling module xil_defaultlib.design_1_orgate_2_0
+Compiling module xil_defaultlib.design_1
+Compiling module xil_defaultlib.design_1_sim
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot design_1_sim_time_synth

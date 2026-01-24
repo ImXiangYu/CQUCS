@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Thu Nov 24 15:51:18 2022
+# Process ID: 12732
+# Current directory: C:/Users/thatcher/Desktop/Project3-3/Project3-3.runs/impl_1
+# Command line: vivado.exe -log design_1.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source design_1.tcl -notrace
+# Log file: C:/Users/thatcher/Desktop/Project3-3/Project3-3.runs/impl_1/design_1.vdi
+# Journal file: C:/Users/thatcher/Desktop/Project3-3/Project3-3.runs/impl_1\vivado.jou
+# Running On: Unicx, OS: Windows, CPU Frequency: 2592 MHz, CPU Physical cores: 6, Host memory: 17014 MB
+#-----------------------------------------------------------
+source design_1.tcl -notrace

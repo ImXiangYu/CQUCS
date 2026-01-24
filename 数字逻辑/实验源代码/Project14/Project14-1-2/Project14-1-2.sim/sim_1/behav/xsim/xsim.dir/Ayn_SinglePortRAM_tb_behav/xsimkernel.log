@@ -1,0 +1,7 @@
+Running: xsim.dir/Ayn_SinglePortRAM_tb_behav/xsimk.exe -simmode gui -wdb Ayn_SinglePortRAM_tb_behav.wdb -simrunnum 0 -socket 63922
+Design successfully loaded
+Design Loading Memory Usage: 6904 KB (Peak: 6904 KB)
+Design Loading CPU Usage: 31 ms
+Simulation completed
+Simulation Memory Usage: 7540 KB (Peak: 7540 KB)
+Simulation CPU Usage: 46 ms

@@ -1,0 +1,11 @@
+0.6
+2018.3
+Dec  7 2018
+00:33:28
+D:/CODES/vivado/Project15/Project15.sim/sim_1/behav/xsim/glbl.v,1544155481,verilog,,,,glbl,,,,,,,,
+D:/CODES/vivado/Project15/Project15.srcs/sim_1/new/Detector1011_tb.v,1639296938,verilog,,,,Detector1101_tb,,,,,,,,
+D:/CODES/vivado/Project15/Project15.srcs/sim_1/new/PISO_tb.v,1639311385,verilog,,,,PISO_tb,,,,,,,,
+D:/CODES/vivado/Project15/Project15.srcs/sim_1/new/SIPO_tb.v,1639311662,verilog,,,,SIPO_tb,,,,,,,,
+D:/CODES/vivado/Project15/Project15.srcs/sources_1/new/Detector1101.v,1639296919,verilog,,D:/CODES/vivado/Project15/Project15.srcs/sim_1/new/Detector1011_tb.v,,Detector1101,,,,,,,,
+D:/CODES/vivado/Project15/Project15.srcs/sources_1/new/PISO.v,1638952461,verilog,,D:/CODES/vivado/Project15/Project15.srcs/sim_1/new/PISO_tb.v,,PISO,,,,,,,,
+D:/CODES/vivado/Project15/Project15.srcs/sources_1/new/SIPO.v,1638968967,verilog,,D:/CODES/vivado/Project15/Project15.srcs/sim_1/new/SIPO_tb.v,,SIPO,,,,,,,,

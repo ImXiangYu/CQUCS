@@ -1,0 +1,25 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Sun Nov 14 15:41:22 2021
+# Process ID: 25876
+# Current directory: D:/CODES/vivado/Project7
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent12656 D:\CODES\vivado\Project7\Project7.xpr
+# Log file: D:/CODES/vivado/Project7/vivado.log
+# Journal file: D:/CODES/vivado/Project7\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/CODES/vivado/Project7/Project7.xpr
+open_hw
+connect_hw_server
+open_hw_target
+set_property PROGRAM.FILE {D:/CODES/vivado/Project7/Project7.runs/impl_1/clock.bit} [get_hw_devices xc7a35t_0]
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
+update_compile_order -fileset sources_1
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {D:/CODES/vivado/Project7/Project7.runs/impl_1/clock.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]

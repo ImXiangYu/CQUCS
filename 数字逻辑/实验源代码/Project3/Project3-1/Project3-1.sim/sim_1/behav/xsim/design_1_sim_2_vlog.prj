@@ -1,0 +1,26 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../Project3-1.ip_user_files/bd/design_1/ipshared/ee7c/andgate.v" \
+"../../../../Project3-1.ip_user_files/bd/design_1/ip/design_1_andgate_0_0/sim/design_1_andgate_0_0.v" \
+"../../../../Project3-1.ip_user_files/bd/design_1/ipshared/811e/notgate.v" \
+"../../../../Project3-1.ip_user_files/bd/design_1/ip/design_1_notgate_0_0/sim/design_1_notgate_0_0.v" \
+"../../../../Project3-1.ip_user_files/bd/design_1/ip/design_1_notgate_1_0/sim/design_1_notgate_1_0.v" \
+"../../../../Project3-1.ip_user_files/bd/design_1/ipshared/0f02/orgate.v" \
+"../../../../Project3-1.ip_user_files/bd/design_1/ip/design_1_orgate_0_0/sim/design_1_orgate_0_0.v" \
+"../../../../Project3-1.ip_user_files/bd/design_1/ip/design_1_andgate_1_0/sim/design_1_andgate_1_0.v" \
+"../../../../Project3-1.ip_user_files/bd/design_1/ip/design_1_orgate_1_0/sim/design_1_orgate_1_0.v" \
+"../../../../Project3-1.ip_user_files/bd/design_1/ip/design_1_orgate_2_0/sim/design_1_orgate_2_0.v" \
+"../../../../Project3-1.ip_user_files/bd/design_1/ip/design_1_andgate_1_1/sim/design_1_andgate_1_1.v" \
+"../../../../Project3-1.ip_user_files/bd/design_1/ip/design_1_andgate_0_1/sim/design_1_andgate_0_1.v" \
+"../../../../Project3-1.ip_user_files/bd/design_1/ip/design_1_andgate_0_2/sim/design_1_andgate_0_2.v" \
+"../../../../Project3-1.ip_user_files/bd/design_1/ip/design_1_andgate_0_3/sim/design_1_andgate_0_3.v" \
+"../../../../Project3-1.ip_user_files/bd/design_1/ip/design_1_andgate_2_0/sim/design_1_andgate_2_0.v" \
+"../../../../Project3-1.ip_user_files/bd/design_1/ip/design_1_andgate_2_1/sim/design_1_andgate_2_1.v" \
+"../../../../Project3-1.ip_user_files/bd/design_1/sim/design_1.v" \
+"../../../../Project3-1.srcs/sim_1/new/design_1_sim_2.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

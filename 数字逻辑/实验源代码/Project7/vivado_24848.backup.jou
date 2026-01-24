@@ -1,0 +1,27 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Sat Nov 26 22:08:21 2022
+# Process ID: 24848
+# Current directory: C:/Users/lyk/Desktop/mathlogic/检查/第二次实验/第二次实验/Project7
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent15144 C:\Users\lyk\Desktop\mathlogic\检查\第二次实验\第二次实验\Project7\Project7.xpr
+# Log file: C:/Users/lyk/Desktop/mathlogic/检查/第二次实验/第二次实验/Project7/vivado.log
+# Journal file: C:/Users/lyk/Desktop/mathlogic/检查/第二次实验/第二次实验/Project7\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/lyk/Desktop/mathlogic/检查/第二次实验/第二次实验/Project7/Project7.xpr
+update_compile_order -fileset sources_1
+save_project_as test2 C:/Users/lyk/test2 -force
+open_hw
+connect_hw_server
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/lyk/test2/test2.runs/impl_1/clock.bit} [get_hw_devices xc7a35t_0]
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {C:/Users/lyk/test2/test2.runs/impl_1/clock.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+close_hw

@@ -3,6 +3,12 @@
 
 Chongqing University (CQU) School of Computer Science (CS). A compilation of resources for undergraduate computer science courses at Chongqing University.
 
+-------------
+
+**如仅需下载其中某一课程，请使用[DownGit](https://downgit.github.io/#/home)**
+
+打开对应课程后复制链接，粘贴并下载即可，无需Clone完整仓库。
+
 ----------
 
 **部分内容为后期收录，真实性请自行判断。**
@@ -16,11 +22,32 @@ Chongqing University (CQU) School of Computer Science (CS). A compilation of res
 ## 程序设计基础
 
 - 课程Project
+- PTA习题（待更新）
+- 实验（待更新）
 
 ## 离散数学
 
 - 历年真题
 - 课后习题答案
+
+## 数据结构与算法
+
+- 实验报告
+- 复习资料
+- PTA习题（待更新）
+
+## 数字逻辑
+
+- 复习资料
+- 实验报告
+- 实验源代码
+- 实验指导书
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,268 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
+| Date         : Thu Nov 24 14:52:07 2022
+| Host         : Unicx running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a35tcpg236-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_orgate_2_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_orgate_2_0 (xilinx.com:user:orgate:1.0) from (Rev. 4) to (Rev. 2)
+
+
+
+
+
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
+| Date         : Thu Nov 24 14:52:07 2022
+| Host         : Unicx running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a35tcpg236-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_orgate_1_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_orgate_1_0 (xilinx.com:user:orgate:1.0) from (Rev. 4) to (Rev. 2)
+
+
+
+
+
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
+| Date         : Thu Nov 24 14:52:07 2022
+| Host         : Unicx running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a35tcpg236-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_orgate_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_orgate_0_0 (xilinx.com:user:orgate:1.0) from (Rev. 4) to (Rev. 2)
+
+
+
+
+
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
+| Date         : Thu Nov 24 14:52:07 2022
+| Host         : Unicx running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a35tcpg236-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_notgate_1_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_notgate_1_0 (xilinx.com:user:notgate:1.0) from (Rev. 7) to (Rev. 2)
+
+
+
+
+
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
+| Date         : Thu Nov 24 14:52:07 2022
+| Host         : Unicx running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a35tcpg236-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_notgate_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of design_1_notgate_0_0 (xilinx.com:user:notgate:1.0) from (Rev. 7) to (Rev. 2)
+
+
+
+
+
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
+| Date         : Thu Nov 24 14:52:07 2022
+| Host         : Unicx running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a35tcpg236-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_andgate_2_1'
+
+1. Summary
+----------
+
+SUCCESS in the conversion of design_1_andgate_2_1 (xilinx.com:user:andgate:1.0 (Rev. 2)) to Vivado generation flows.
+
+
+
+
+
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
+| Date         : Thu Nov 24 14:52:07 2022
+| Host         : Unicx running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a35tcpg236-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_andgate_2_0'
+
+1. Summary
+----------
+
+SUCCESS in the conversion of design_1_andgate_2_0 (xilinx.com:user:andgate:1.0 (Rev. 2)) to Vivado generation flows.
+
+
+
+
+
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
+| Date         : Thu Nov 24 14:52:07 2022
+| Host         : Unicx running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a35tcpg236-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_andgate_1_1'
+
+1. Summary
+----------
+
+SUCCESS in the conversion of design_1_andgate_1_1 (xilinx.com:user:andgate:1.0 (Rev. 2)) to Vivado generation flows.
+
+
+
+
+
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
+| Date         : Thu Nov 24 14:52:07 2022
+| Host         : Unicx running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a35tcpg236-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_andgate_1_0'
+
+1. Summary
+----------
+
+SUCCESS in the conversion of design_1_andgate_1_0 (xilinx.com:user:andgate:1.0 (Rev. 2)) to Vivado generation flows.
+
+
+
+
+
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
+| Date         : Thu Nov 24 14:52:07 2022
+| Host         : Unicx running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a35tcpg236-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_andgate_0_3'
+
+1. Summary
+----------
+
+SUCCESS in the conversion of design_1_andgate_0_3 (xilinx.com:user:andgate:1.0 (Rev. 2)) to Vivado generation flows.
+
+
+
+
+
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
+| Date         : Thu Nov 24 14:52:07 2022
+| Host         : Unicx running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a35tcpg236-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_andgate_0_2'
+
+1. Summary
+----------
+
+SUCCESS in the conversion of design_1_andgate_0_2 (xilinx.com:user:andgate:1.0 (Rev. 2)) to Vivado generation flows.
+
+
+
+
+
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
+| Date         : Thu Nov 24 14:52:07 2022
+| Host         : Unicx running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a35tcpg236-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_andgate_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the conversion of design_1_andgate_0_1 (xilinx.com:user:andgate:1.0 (Rev. 2)) to Vivado generation flows.
+
+
+
+
+
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.1 (win64) Build 3526262 Mon Apr 18 15:48:16 MDT 2022
+| Date         : Thu Nov 24 14:52:07 2022
+| Host         : Unicx running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7a35tcpg236-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_andgate_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the conversion of design_1_andgate_0_0 (xilinx.com:user:andgate:1.0 (Rev. 2)) to Vivado generation flows.
+

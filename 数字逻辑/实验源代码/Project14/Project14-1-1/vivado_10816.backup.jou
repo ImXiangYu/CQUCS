@@ -1,0 +1,42 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Fri Nov 25 23:13:16 2022
+# Process ID: 10816
+# Current directory: C:/Users/thatcher/Desktop/Project14-1-1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent1672 C:\Users\thatcher\Desktop\Project14-1-1\Project-14-1-1.xpr
+# Log file: C:/Users/thatcher/Desktop/Project14-1-1/vivado.log
+# Journal file: C:/Users/thatcher/Desktop/Project14-1-1\vivado.jou
+# Running On: Unicx, OS: Windows, CPU Frequency: 2592 MHz, CPU Physical cores: 6, Host memory: 17014 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/thatcher/Desktop/Project14-1-1/Project-14-1-1.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+source Syn_SinglePortRAM_tb.tcl
+close_sim
+close_project
+open_project C:/Users/thatcher/Desktop/Project14-1-2/Project14-1-2.xpr
+launch_simulation
+source Asy_SinglePortRAM_tb.tcl
+update_compile_order -fileset sources_1
+close_sim
+close_project
+open_project C:/Users/thatcher/Desktop/Project14-2-1/Project14-2-1.xpr
+launch_simulation
+source DoublePortRAM_tb.tcl
+update_compile_order -fileset sources_1
+close_sim
+close_project
+open_project C:/Users/thatcher/Desktop/Project14-2-2/Project14-2-2.xpr
+launch_simulation
+source DoublePortRAM_tb.tcl
+update_compile_order -fileset sources_1
+close_sim
+close_project
+open_project C:/Users/thatcher/Desktop/Project14-3/Project14-3.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+source FIFO_tb.tcl
+close_sim

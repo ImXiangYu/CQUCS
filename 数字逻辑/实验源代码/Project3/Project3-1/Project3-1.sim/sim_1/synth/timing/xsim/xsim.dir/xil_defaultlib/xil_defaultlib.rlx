@@ -1,0 +1,6 @@
+0.6
+2018.3
+Dec  7 2018
+00:33:28
+D:/CODES/vivado/Project3-1/Project3-1.sim/sim_1/synth/timing/xsim/design_1_sim_time_synth.v,1634974288,verilog,,D:/CODES/vivado/Project3-1/Project3-1.srcs/sim_1/new/design_1_sim.v,,design_1;design_1_andgate_0_0;design_1_andgate_0_1;design_1_andgate_0_2;design_1_andgate_0_3;design_1_andgate_1_0;design_1_andgate_1_1;design_1_andgate_2_0;design_1_andgate_2_1;design_1_notgate_0_0;design_1_notgate_1_0;design_1_orgate_0_0;design_1_orgate_1_0;design_1_orgate_2_0;design_1_wrapper;glbl,,,,,,,,
+D:/CODES/vivado/Project3-1/Project3-1.srcs/sim_1/new/design_1_sim.v,1634957653,verilog,,,,design_1_sim,,,,,,,,

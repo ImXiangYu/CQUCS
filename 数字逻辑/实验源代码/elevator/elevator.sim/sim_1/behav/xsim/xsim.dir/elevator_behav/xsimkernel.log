@@ -1,0 +1,7 @@
+Running: xsim.dir/elevator_behav/xsimk.exe -simmode gui -wdb elevator_behav.wdb -simrunnum 0 -socket 52701
+Design successfully loaded
+Design Loading Memory Usage: 6908 KB (Peak: 6908 KB)
+Design Loading CPU Usage: 62 ms
+Simulation completed
+Simulation Memory Usage: 7540 KB (Peak: 7540 KB)
+Simulation CPU Usage: 78 ms

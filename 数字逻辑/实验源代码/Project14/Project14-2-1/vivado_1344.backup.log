@@ -1,0 +1,209 @@
+#-----------------------------------------------------------
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Thu Dec  2 15:56:37 2021
+# Process ID: 1344
+# Current directory: D:/CODES/vivado/Project14-2-1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent4924 D:\CODES\vivado\Project14-2-1\Project14-2-1.xpr
+# Log file: D:/CODES/vivado/Project14-2-1/vivado.log
+# Journal file: D:/CODES/vivado/Project14-2-1\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/CODES/vivado/Project14-2-1/Project14-2-1.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2018.3/data/ip'.
+update_compile_order -fileset sources_1
+open_run impl_1
+INFO: [Netlist 29-17] Analyzing 12 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.3
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.038 . Memory (MB): peak = 954.668 ; gain = 0.035
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.039 . Memory (MB): peak = 954.668 ; gain = 0.035
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 954.840 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+open_run: Time (s): cpu = 00:00:13 ; elapsed = 00:00:07 . Memory (MB): peak = 1130.754 ; gain = 343.438
+WARNING: [Timing 38-313] There are no user specified timing constraints. Timing constraints are needed for proper timing analysis.
+set_property IOSTANDARD LVCMOS33 [get_ports [list we_b]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list we_b]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list we_a]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list rst]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list error]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {display[6]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {display[5]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {display[4]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {display[3]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {display[2]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {display[1]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {display[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {din_b[3]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {din_b[2]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {din_b[1]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {din_b[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {din_a[3]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {din_a[2]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {din_a[1]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {din_a[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list clk]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {an[3]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {an[2]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {an[1]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {an[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {addr_b[2]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {addr_b[1]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {addr_b[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {addr_a[2]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {addr_a[1]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {addr_a[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {addr_a[2]}]]
+startgroup
+set_property package_pin "" [get_ports [list  {addr_b[2]}]]
+place_ports rst U18
+endgroup
+place_ports we_b R2
+place_ports we_a T1
+place_ports error L1
+place_ports {display[6]} W7
+place_ports {display[5]} W6
+place_ports {display[4]} U8
+place_ports {display[3]} V8
+place_ports {display[2]} U5
+place_ports {display[1]} V5
+place_ports {display[0]} U7
+place_ports {din_a[3]} U1
+place_ports {din_a[2]} W2
+place_ports {din_a[1]} R3
+place_ports {din_a[0]} T2
+place_ports clk T3
+place_ports {an[3]} V2
+place_ports {an[3]} W4
+place_ports {an[2]} V4
+place_ports {an[1]} U4
+place_ports {an[0]} U2
+set_property package_pin "" [get_ports [list  {addr_b[2]}]]
+startgroup
+set_property package_pin "" [get_ports [list  clk]]
+place_ports {din_b[3]} T3
+endgroup
+place_ports {din_b[2]} V2
+place_ports {din_b[1]} W13
+place_ports {din_b[0]} W14
+startgroup
+set_property package_pin "" [get_ports [list  {din_b[2]}]]
+place_ports {din_b[3]} V2
+endgroup
+startgroup
+set_property package_pin "" [get_ports [list  {din_b[1]}]]
+place_ports {din_b[2]} W13
+endgroup
+startgroup
+set_property package_pin "" [get_ports [list  {din_b[0]}]]
+place_ports {din_b[1]} W14
+endgroup
+place_ports {din_b[3]} T3
+place_ports {din_b[2]} V2
+place_ports {din_b[1]} W13
+place_ports {din_b[0]} W14
+set_property package_pin "" [get_ports [list  clk]]
+place_ports clk W5
+startgroup
+set_property package_pin "" [get_ports [list  {addr_a[2]}]]
+place_ports {addr_b[2]} W16
+endgroup
+set_property package_pin "" [get_ports [list  {addr_a[2]}]]
+set_property package_pin "" [get_ports [list  {addr_a[2]}]]
+startgroup
+set_property package_pin "" [get_ports [list  {addr_a[0]}]]
+place_ports {addr_a[2]} V15
+endgroup
+place_ports {addr_a[1]} W15
+place_ports {addr_a[0]} W17
+place_ports {addr_b[0]} A17
+place_ports {addr_b[0]} V17
+place_ports {addr_b[1]} A17
+place_ports {addr_b[1]} V16
+set_property IOSTANDARD LVCMOS33 [get_ports [list {addr_b[1]}]]
+file mkdir D:/CODES/vivado/Project14-2-1/Project14-2-1.srcs/constrs_1/new
+close [ open D:/CODES/vivado/Project14-2-1/Project14-2-1.srcs/constrs_1/new/Syn_DoublePortRAM_xdc.xdc w ]
+add_files -fileset constrs_1 D:/CODES/vivado/Project14-2-1/Project14-2-1.srcs/constrs_1/new/Syn_DoublePortRAM_xdc.xdc
+set_property target_constrs_file D:/CODES/vivado/Project14-2-1/Project14-2-1.srcs/constrs_1/new/Syn_DoublePortRAM_xdc.xdc [current_fileset -constrset]
+save_constraints -force
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1622.969 ; gain = 0.000
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+[Thu Dec  2 16:04:19 2021] Launched synth_1...
+Run output will be captured here: D:/CODES/vivado/Project14-2-1/Project14-2-1.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 8
+[Thu Dec  2 16:05:05 2021] Launched impl_1...
+Run output will be captured here: D:/CODES/vivado/Project14-2-1/Project14-2-1.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+[Thu Dec  2 16:06:06 2021] Launched impl_1...
+Run output will be captured here: D:/CODES/vivado/Project14-2-1/Project14-2-1.runs/impl_1/runme.log
+open_hw
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2018.3
+  **** Build date : Dec  7 2018-00:40:27
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210183B03CC8A
+set_property PROGRAM.FILE {D:/CODES/vivado/Project14-2-1/Project14-2-1.runs/impl_1/top_Syn_DoublePortRAM.bit} [get_hw_devices xc7a35t_0]
+current_hw_device [get_hw_devices xc7a35t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {D:/CODES/vivado/Project14-2-1/Project14-2-1.runs/impl_1/top_Syn_DoublePortRAM.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+startgroup
+set_property package_pin "" [get_ports [list  we_b]]
+place_ports we_a R2
+endgroup
+place_ports we_b T1
+save_constraints_as constrs_2
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2697.848 ; gain = 0.000
+set_property constrset constrs_2 [get_runs synth_1]
+set_property constrset constrs_2 [get_runs impl_1]
+reset_run synth_1
+launch_runs synth_1 -jobs 16
+[Thu Dec  2 16:15:11 2021] Launched synth_1...
+Run output will be captured here: D:/CODES/vivado/Project14-2-1/Project14-2-1.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 16
+[Thu Dec  2 16:16:51 2021] Launched impl_1...
+Run output will be captured here: D:/CODES/vivado/Project14-2-1/Project14-2-1.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+[Thu Dec  2 16:18:58 2021] Launched impl_1...
+Run output will be captured here: D:/CODES/vivado/Project14-2-1/Project14-2-1.runs/impl_1/runme.log
+set_property PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a35t_0]
+set_property PROGRAM.FILE {D:/CODES/vivado/Project14-2-1/Project14-2-1.runs/impl_1/top_Syn_DoublePortRAM.bit} [get_hw_devices xc7a35t_0]
+program_hw_devices [get_hw_devices xc7a35t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a35t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a35t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+reset_run synth_1
+launch_runs synth_1 -jobs 16
+[Thu Dec  2 16:45:15 2021] Launched synth_1...
+Run output will be captured here: D:/CODES/vivado/Project14-2-1/Project14-2-1.runs/synth_1/runme.log
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/210183B03CC8A
+exit
+INFO: [Common 17-206] Exiting Vivado at Thu Dec  2 16:58:38 2021...
