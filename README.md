@@ -51,6 +51,21 @@ Chongqing University (CQU) School of Computer Science (CS). A compilation of res
 - 实验报告
 - 实验源代码
 
+## 程序设计进阶实践
+
+- PTA习题（待更新）
+
+## 机器学习基础/机器学习
+
+- 复习资料（含回忆版真题）
+- 实验报告
+- 实验源代码
+- 作业
+
+
+
+
+
 
 
 
