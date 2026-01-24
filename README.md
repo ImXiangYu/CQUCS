@@ -87,6 +87,12 @@ Chongqing University (CQU) School of Computer Science (CS). A compilation of res
 - 阅读报告
 - 实验报告
 
+## 软件工程/软工
+
+- 实验报告
+- 实验源代码
+- 课程研讨视频（已发B站，看文档获取链接）
+
 
 
 
