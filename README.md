@@ -43,6 +43,20 @@ Chongqing University (CQU) School of Computer Science (CS). A compilation of res
 - 实验源代码
 - 实验指导书
 
+## 计算机组成原理/计组
+
+- 历年真题
+- 复习资料
+- 作业
+- 实验报告
+- 实验源代码
+
+
+
+
+
+
+
 
 
 
