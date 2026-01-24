@@ -75,6 +75,11 @@ Chongqing University (CQU) School of Computer Science (CS). A compilation of res
 - 实验流程图
 - 课后习题全答案（英）
 
+## 数学实验
+
+- 实验报告
+- 期末论文（不具备参考性）
+
 
 
 
