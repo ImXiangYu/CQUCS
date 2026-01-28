@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电影详情 - 电影推荐</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html">电影推荐</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="recommendations.html" class="nav-link">推荐</a>
+                <a href="movies.html" class="nav-link active">电影搜索</a>
+                <div class="nav-user" id="navUser">
+                    <span class="guest-mode" id="guestMode">游客模式</span>
+                    <a href="login.html" class="btn-login" id="btnLogin">登录</a>
+                    <a href="register.html" class="btn-register" id="btnRegister">注册</a>
+                    <div class="user-menu" id="userMenu" style="display: none;">
+                        <span class="username" id="username"></span>
+                        <a href="#" class="btn-logout" id="btnLogout" style="color: #000000; font-weight: bold;">退出</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="movie-detail" id="movieDetail">
+                <div class="loading">加载中...</div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cookie.js"></script>
+    <script>
+        let movieId = null;
+        let currentRating = 0;
+        let userRating = null;
+        let comments = [];
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            movieId = parseInt(urlParams.get('id'));
+            
+            if (!movieId) {
+                document.getElementById('movieDetail').innerHTML = '<div class="loading">电影ID无效</div>';
+                return;
+            }
+            
+            await loadMovieDetail();
+            await loadRatingStats();
+            await loadComments();
+            
+            if (auth.isAuthenticated()) {
+                await loadUserRating();
+            } else {
+                const guestRatings = guestMode.getRatings();
+                if (guestRatings[movieId]) {
+                    userRating = guestRatings[movieId];
+                    currentRating = userRating;
+                    updateRatingDisplay();
+                }
+            }
+            
+            // 拦截导航栏链接点击，确保评分更新标记在跳转时生效
+            const navLinks = document.querySelectorAll('.nav-link, .nav-brand a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    // 检查是否有评分更新标记
+                    const ratingUpdated = localStorage.getItem('ratingUpdated');
+                    if (ratingUpdated) {
+                        const updateTime = parseInt(ratingUpdated);
+                        const now = Date.now();
+                        // 如果标记是30秒内设置的，更新标记时间，确保目标页面能检测到
+                        if (now - updateTime < 30000) {
+                            // 更新标记时间，确保目标页面能检测到
+                            localStorage.setItem('ratingUpdated', Date.now().toString());
+                        } else {
+                            // 超过30秒的标记清除
+                            localStorage.removeItem('ratingUpdated');
+                        }
+                    }
+                });
+            });
+            
+            // 监听页面卸载事件，确保离开详情页时标记仍然有效
+            window.addEventListener('beforeunload', () => {
+                const ratingUpdated = localStorage.getItem('ratingUpdated');
+                if (ratingUpdated) {
+                    const updateTime = parseInt(ratingUpdated);
+                    const now = Date.now();
+                    // 如果标记是30秒内设置的，更新标记时间
+                    if (now - updateTime < 30000) {
+                        localStorage.setItem('ratingUpdated', Date.now().toString());
+                    }
+                }
+            });
+        });
+
+        async function loadMovieDetail() {
+            try {
+                console.log('正在加载电影详情，movieId:', movieId);
+                const movie = await movieAPI.getDetail(movieId);
+                
+                if (!movie || !movie.title) {
+                    throw new Error('电影数据不完整');
+                }
+                
+                console.log('成功加载电影数据:', movie);
+                
+                const genres = Array.isArray(movie.genres) ? movie.genres.join(' / ') : '';
+                const plot = movie.plot || movie.intro || '暂无简介';
+                const year = movie.year || '';
+                const directors = Array.isArray(movie.directors) ? movie.directors.join('、') : '';
+                const actors = Array.isArray(movie.actors) ? movie.actors.join('、') : '';
+                const writers = Array.isArray(movie.writers) ? movie.writers.join('、') : '';
+                const time = movie.time || '';
+                const release_time = movie.release_time || '';
+                
+                // 优先使用CSV中的poster_url（图片网址），如果网络图片加载失败则使用本地poster
+                let posterUrl = '';
+                let fallbackUrl = '';
+                
+                if (movie.poster_url && movie.poster_url.trim()) {
+                    posterUrl = movie.poster_url.trim();
+                }
+                
+                // 设置本地图片作为备用
+                if (movie.poster_local) {
+                    fallbackUrl = `/${movie.poster_local}`;
+                } else if (movieId) {
+                    // 尝试使用movieId查找海报（data目录）
+                    fallbackUrl = `/data/reco_artifacts_2026-01-16/poster/${movieId}.jpg`;
+                }
+                
+                // 如果网络图片存在，使用网络图片，失败时自动切换到本地图片
+                const posterHtml = posterUrl 
+                    ? `<img src="${posterUrl}" alt="${movie.title}" onerror="console.error('网络图片加载失败，切换到本地图片'); this.onerror=null; this.src='${fallbackUrl || ''}'; if (!this.src || this.src === window.location.href) { this.parentElement.innerHTML='<div style=\\'text-align: center; padding: 40px 20px; color: #fff;\\'><div style=\\'font-size: 64px; margin-bottom: 15px;\\'>🎬</div><div>${movie.title}</div></div>'; }">`
+                    : (fallbackUrl 
+                        ? `<img src="${fallbackUrl}" alt="${movie.title}" onerror="this.parentElement.innerHTML='<div style=\\'text-align: center; padding: 40px 20px; color: #fff;\\'><div style=\\'font-size: 64px; margin-bottom: 15px;\\'>🎬</div><div>${movie.title}</div></div>'">`
+                        : `<div style="text-align: center; padding: 40px 20px; color: #fff;"><div style="font-size: 64px; margin-bottom: 15px;">🎬</div><div>${movie.title}</div></div>`);
+                
+                document.getElementById('movieDetail').innerHTML = `
+                    <div class="movie-detail-header">
+                        <div class="movie-detail-poster">
+                            ${posterHtml}
+                        </div>
+                        <div class="movie-detail-info">
+                            <h1>${movie.title}${year ? ` (${year})` : ''}</h1>
+                            <div class="genres">类型：${genres || '未知'}</div>
+                            ${time ? `<div class="movie-meta-item"><span class="movie-meta-label">时长：</span>${time}</div>` : ''}
+                            ${release_time ? `<div class="movie-meta-item"><span class="movie-meta-label">上映时间：</span>${release_time}</div>` : ''}
+                            ${directors ? `<div class="movie-meta-item"><span class="movie-meta-label">导演：</span>${directors}</div>` : ''}
+                            ${writers ? `<div class="movie-meta-item"><span class="movie-meta-label">编剧：</span>${writers}</div>` : ''}
+                            ${actors ? `<div class="movie-meta-item"><span class="movie-meta-label">主演：</span>${actors}</div>` : ''}
+                            <div class="rating-section">
+                                <div>平均评分：<span id="avgRating">加载中...</span></div>
+                                <div>评分人数：<span id="ratingCount">加载中...</span></div>
+                            </div>
+                            <div class="rating-input">
+                                <div>我的评分：</div>
+                                <div class="rating-stars" id="ratingStars">
+                                    ${[1,2,3,4,5].map(i => `<span class="star" data-rating="${i}">★</span>`).join('')}
+                                </div>
+                                <button class="btn-rate" id="btnRate" onclick="submitRating()">提交评分</button>
+                                <span style="font-size: 12px; color: #666; margin-left: 10px;">提示：每个电影只能评分一次，可修改</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="movie-plot-full">
+                        <h3>剧情简介</h3>
+                        <p>${plot}</p>
+                    </div>
+                    <div class="comments-section">
+                        <h3>评论 (${comments.length})</h3>
+                        ${auth.isAuthenticated() ? `
+                            <div class="comment-form">
+                                <textarea id="commentContent" placeholder="写下你的评论（可选，至少5个字符）..."></textarea>
+                                <div style="margin-top: 10px;">
+                                    <label>评分（可选）：</label>
+                                    <div class="rating-stars" id="commentRatingStars">
+                                        ${[1,2,3,4,5].map(i => `<span class="star" data-rating="${i}">★</span>`).join('')}
+                                    </div>
+                                    <span style="font-size: 12px; color: #666; margin-left: 10px;">提示：可以只评论不评分，或只评分不评论</span>
+                                </div>
+                                <button class="btn-submit" onclick="submitComment()" style="margin-top: 15px;">提交</button>
+                            </div>
+                        ` : `
+                            <div class="comment-form" style="text-align: center; padding: 30px;">
+                                <p>登录后可以发表评论</p>
+                                <a href="login.html?redirect=${encodeURIComponent(window.location.href)}" class="btn-login">立即登录</a>
+                            </div>
+                        `}
+                        <div id="commentsList"></div>
+                    </div>
+                `;
+                
+                // 绑定星星点击事件
+                const stars = document.querySelectorAll('#ratingStars .star');
+                stars.forEach((star, index) => {
+                    star.addEventListener('click', () => {
+                        if (!auth.isAuthenticated() && guestMode.isGuest()) {
+                            if (confirm('登录后可以保存评分记录，是否前往登录？')) {
+                                window.location.href = `login.html?redirect=${encodeURIComponent(window.location.href)}`;
+                                return;
+                            }
+                        }
+                        currentRating = index + 1;
+                        updateRatingDisplay();
+                    });
+                });
+                
+                // 绑定评论评分星星
+                if (auth.isAuthenticated()) {
+                    const commentStars = document.querySelectorAll('#commentRatingStars .star');
+                    let commentRating = 0;
+                    commentStars.forEach((star, index) => {
+                        star.addEventListener('click', () => {
+                            commentRating = index + 1;
+                            commentStars.forEach((s, i) => {
+                                if (i < commentRating) {
+                                    s.classList.add('active');
+                                } else {
+                                    s.classList.remove('active');
+                                }
+                            });
+                            window.commentRating = commentRating;
+                        });
+                    });
+                }
+                
+                updateRatingDisplay();
+                displayComments();
+            } catch (error) {
+                console.error('加载电影详情失败:', error);
+                let errorMsg = error.message || '未知错误';
+                
+                // 检查是否是404或电影不存在
+                if (errorMsg.includes('404') || errorMsg.includes('不存在') || errorMsg.includes('not found')) {
+                    errorMsg = '电影不存在，请检查电影ID是否正确';
+                } else if (errorMsg.includes('无法连接')) {
+                    errorMsg = '无法连接到服务器，请检查后端是否已启动';
+                } else if (errorMsg.includes('数据不完整')) {
+                    errorMsg = '电影数据不完整，请稍后重试';
+                }
+                
+                document.getElementById('movieDetail').innerHTML = `
+                    <div class="error-message" style="text-align: center; padding: 40px; color: #d32f2f;">
+                        <h2 style="margin-bottom: 20px;">加载失败</h2>
+                        <p style="font-size: 16px; margin-bottom: 20px;">${errorMsg}</p>
+                        <p style="font-size: 14px; color: #666; margin-bottom: 20px;">电影ID: ${movieId}</p>
+                        <a href="index.html" style="display: inline-block; padding: 10px 20px; background: #007722; color: #fff; text-decoration: none; border-radius: 4px;">返回首页</a>
+                    </div>
+                `;
+            }
+        }
+
+        async function loadRatingStats() {
+            try {
+                const stats = await ratingAPI.getMovieStats(movieId);
+                const avgEl = document.getElementById('avgRating');
+                const countEl = document.getElementById('ratingCount');
+                if (avgEl) avgEl.textContent = stats.avg ? stats.avg.toFixed(1) : '暂无';
+                if (countEl) countEl.textContent = stats.count || 0;
+            } catch (error) {
+                console.error('加载评分统计失败:', error);
+            }
+        }
+
+        async function loadUserRating() {
+            try {
+                // 先从ratings集合获取评分
+                const ratings = await ratingAPI.getUserRatings(1, 100);
+                let rating = ratings.results.find(r => r.movieId === movieId);
+                
+                // 如果ratings中没有，尝试从comments中获取（评论中可能包含评分）
+                if (!rating) {
+                    const commentsData = await commentAPI.getMovieComments(movieId, 1, 100);
+                    if (auth.isAuthenticated()) {
+                        const user = auth.getCurrentUser();
+                        const userComment = commentsData.results.find(c => c.userId === user.userId);
+                        if (userComment && userComment.rating) {
+                            userRating = userComment.rating;
+                            currentRating = userRating;
+                            updateRatingDisplay();
+                            return;
+                        }
+                    }
+                } else {
+                    userRating = rating.rating;
+                    currentRating = userRating;
+                    updateRatingDisplay();
+                }
+            } catch (error) {
+                console.error('加载用户评分失败:', error);
+            }
+        }
+
+        async function loadComments() {
+            try {
+                const data = await commentAPI.getMovieComments(movieId, 1, 50);
+                comments = data.results || [];
+                displayComments();
+            } catch (error) {
+                console.error('加载评论失败:', error);
+                comments = [];
+            }
+        }
+
+        function displayComments() {
+            const container = document.getElementById('commentsList');
+            if (!container) return;
+            
+            if (comments.length === 0) {
+                container.innerHTML = '<div class="loading">暂无评论</div>';
+                return;
+            }
+            
+            container.innerHTML = comments.map(comment => {
+                const time = comment.timestamp ? new Date(comment.timestamp).toLocaleString('zh-CN') : '';
+                const ratingHtml = comment.rating ? `
+                    <div class="comment-rating">
+                        <span class="star">★</span>
+                        <span>${comment.rating.toFixed(1)}</span>
+                    </div>
+                ` : '';
+                
+                const actionsHtml = auth.isAuthenticated() && auth.getCurrentUser() && auth.getCurrentUser().userId === comment.userId ? `
+                    <div class="comment-actions">
+                        <button onclick="editComment('${comment.id}')">编辑</button>
+                        <button onclick="deleteComment('${comment.id}')">删除</button>
+                    </div>
+                ` : '';
+                
+                return `
+                    <div class="comment-item">
+                        <div class="comment-header">
+                            <div>
+                                <span class="comment-author">${comment.username || '匿名用户'}</span>
+                                ${ratingHtml}
+                            </div>
+                            <span class="comment-time">${time}</span>
+                        </div>
+                        <div class="comment-content">${comment.content}</div>
+                        ${actionsHtml}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function updateRatingDisplay() {
+            const stars = document.querySelectorAll('#ratingStars .star');
+            stars.forEach((star, index) => {
+                if (index < currentRating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+        }
+
+        async function submitRating() {
+            if (currentRating === 0) {
+                alert('请先选择评分');
+                return;
+            }
+            
+            if (!auth.isAuthenticated()) {
+                if (confirm('评分功能需要登录，是否前往登录页面？')) {
+                    window.location.href = 'login.html?redirect=' + encodeURIComponent(window.location.href);
+                }
+                return;
+            }
+            
+            try {
+                await ratingAPI.create(movieId, currentRating);
+                // 设置标记，通知其他页面需要刷新
+                localStorage.setItem('ratingUpdated', Date.now().toString());
+                alert('评分成功！页面将自动刷新以更新平均分。');
+                // 刷新页面以实时更新平均分计算
+                window.location.reload();
+            } catch (error) {
+                console.error('评分失败:', error);
+                if (error.message.includes('Token') || error.message.includes('过期') || error.message.includes('登录')) {
+                    if (confirm('登录已过期，是否前往登录页面？')) {
+                        window.location.href = 'login.html?redirect=' + encodeURIComponent(window.location.href);
+                    }
+                } else {
+                    alert('评分失败：' + error.message);
+                }
+            }
+        }
+
+        async function submitComment() {
+            if (!auth.isAuthenticated()) {
+                if (confirm('评论功能需要登录，是否前往登录页面？')) {
+                    window.location.href = 'login.html?redirect=' + encodeURIComponent(window.location.href);
+                }
+                return;
+            }
+            
+            const content = document.getElementById('commentContent').value.trim();
+            const rating = window.commentRating || null;
+            
+            // 允许只评论不评分，或只评分不评论（但至少要有一样）
+            if (!content && !rating) {
+                alert('请输入评论内容或选择评分');
+                return;
+            }
+            
+            // 如果有评论内容，至少5个字符
+            if (content && content.length < 5) {
+                alert('评论内容至少5个字符');
+                return;
+            }
+            
+            // 如果没有评论内容但有评分，使用默认评论
+            const finalContent = content || '（仅评分）';
+            
+            try {
+                await commentAPI.create(movieId, finalContent, rating);
+                // 如果评论包含评分，刷新页面以实时更新平均分计算
+                if (rating) {
+                    // 设置标记，通知其他页面需要刷新
+                    localStorage.setItem('ratingUpdated', Date.now().toString());
+                    alert('操作成功！页面将自动刷新以更新平均分。');
+                    window.location.reload();
+                } else {
+                    // 如果只是评论没有评分，只重新加载评论列表
+                    document.getElementById('commentContent').value = '';
+                    if (window.commentRating) {
+                        document.querySelectorAll('#commentRatingStars .star').forEach(s => s.classList.remove('active'));
+                        window.commentRating = 0;
+                    }
+                    await loadComments();
+                    alert('操作成功！');
+                }
+            } catch (error) {
+                console.error('评论发表失败:', error);
+                if (error.message.includes('Token') || error.message.includes('过期') || error.message.includes('登录')) {
+                    if (confirm('登录已过期，是否前往登录页面？')) {
+                        window.location.href = 'login.html?redirect=' + encodeURIComponent(window.location.href);
+                    }
+                } else {
+                    alert('操作失败：' + error.message);
+                }
+            }
+        }
+
+        async function deleteComment(commentId) {
+            if (!confirm('确定要删除这条评论吗？')) {
+                return;
+            }
+            
+            try {
+                await commentAPI.delete(commentId);
+                await loadComments();
+                alert('评论已删除');
+            } catch (error) {
+                alert('删除失败：' + error.message);
+            }
+        }
+
+        function editComment(commentId) {
+            const comment = comments.find(c => c.id === commentId);
+            if (!comment) return;
+            
+            const newContent = prompt('编辑评论：', comment.content);
+            if (newContent && newContent.trim() && newContent !== comment.content) {
+                commentAPI.update(commentId, newContent.trim(), comment.rating)
+                    .then(() => {
+                        loadComments();
+                        alert('评论已更新');
+                    })
+                    .catch(error => {
+                        alert('更新失败：' + error.message);
+                    });
+            }
+        }
+    </script>
+</body>
+</html>

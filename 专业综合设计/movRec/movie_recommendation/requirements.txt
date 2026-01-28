@@ -1,0 +1,9 @@
+Django==4.2.7
+djangorestframework==3.14.0
+drf-yasg==1.21.7
+PyJWT==2.8.0
+pymongo==4.6.1
+setuptools>=65.0.0
+beautifulsoup4>=4.12.0
+requests>=2.31.0
+lxml>=4.9.0

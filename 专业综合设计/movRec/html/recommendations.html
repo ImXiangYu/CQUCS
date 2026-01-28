@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>推荐 - 电影推荐</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html">电影推荐</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="recommendations.html" class="nav-link active">推荐</a>
+                <a href="movies.html" class="nav-link">电影搜索</a>
+                <div class="nav-user" id="navUser">
+                    <span class="guest-mode" id="guestMode">游客模式</span>
+                    <a href="login.html" class="btn-login" id="btnLogin">登录</a>
+                    <a href="register.html" class="btn-register" id="btnRegister">注册</a>
+                    <div class="user-menu" id="userMenu" style="display: none;">
+                        <span class="username" id="username"></span>
+                        <a href="#" class="btn-logout" id="btnLogout" style="color: #000000; font-weight: bold;">退出</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- 游客模式提示 -->
+            <div class="recommendation-prompt" id="guestPrompt" style="display: none;">
+                <h3>🎬 登录获得更好的推荐体验</h3>
+                <p>登录后可以享受个性化推荐、保存评分记录等功能</p>
+                <div class="btn-group">
+                    <a href="login.html" class="btn-login">立即登录</a>
+                    <a href="register.html" class="btn-register">免费注册</a>
+                </div>
+            </div>
+
+            <!-- 热门推荐区域 -->
+            <div class="section" id="topRatedSection">
+                <h2 class="section-title">热门推荐</h2>
+                <p class="recommendation-description" style="color: #000; font-weight: 500; margin-bottom: 20px;">基于所有用户的评分，为您推荐最受欢迎的电影（前20部）</p>
+                <div class="movie-grid" id="topRatedList">
+                    <div class="loading">加载中...</div>
+                </div>
+            </div>
+
+            <!-- 个人喜好推荐区域 -->
+            <div class="section" id="personalizedSection" style="display: none;">
+                <h2 class="section-title">个人喜好推荐</h2>
+                <p class="recommendation-description" style="color: #000; font-weight: 500; margin-bottom: 20px;">根据您的好评电影（评分≥4分）的相似度，为您推荐可能喜欢的电影</p>
+                <div class="movie-grid" id="personalizedList">
+                    <div class="loading">加载中...</div>
+                </div>
+                <!-- 分页控件 -->
+                <div class="pagination" id="personalizedPagination" style="display: none;"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cookie.js"></script>
+    <script>
+        // 检查是否需要刷新（评分更新后）
+        function checkRatingUpdate() {
+            const ratingUpdated = localStorage.getItem('ratingUpdated');
+            if (ratingUpdated) {
+                const updateTime = parseInt(ratingUpdated);
+                const now = Date.now();
+                // 如果标记是30秒内设置的，刷新页面
+                if (now - updateTime < 30000) {
+                    localStorage.removeItem('ratingUpdated');
+                    window.location.reload();
+                    return true;
+                } else {
+                    // 超过30秒的标记清除
+                    localStorage.removeItem('ratingUpdated');
+                }
+            }
+            return false;
+        }
+
+        // 处理浏览器后退/前进按钮（pageshow事件）
+        window.addEventListener('pageshow', (event) => {
+            // event.persisted 为 true 表示页面是从缓存中恢复的（如浏览器后退）
+            if (event.persisted) {
+                // 检查是否需要刷新
+                checkRatingUpdate();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // 检查是否需要刷新（评分更新后）
+            if (checkRatingUpdate()) {
+                return; // 如果刷新了，不继续执行
+            }
+            
+            updateUI();
+            // 同时加载热门推荐和个人喜好推荐
+            loadTopRatedRecommendations();
+            if (auth.isAuthenticated()) {
+                loadPersonalizedRecommendations();
+            }
+            
+            // 监听页面可见性变化（从详情页返回时检查）
+            document.addEventListener('visibilitychange', () => {
+                if (!document.hidden) {
+                    // 页面变为可见时检查是否需要刷新
+                    checkRatingUpdate();
+                }
+            });
+        });
+
+        function updateUI() {
+            const isAuthenticated = auth.isAuthenticated();
+            const guestPrompt = document.getElementById('guestPrompt');
+            const personalizedSection = document.getElementById('personalizedSection');
+            
+            if (isAuthenticated) {
+                if (guestPrompt) guestPrompt.style.display = 'none';
+                if (personalizedSection) personalizedSection.style.display = 'block';
+            } else {
+                if (guestPrompt) guestPrompt.style.display = 'block';
+                if (personalizedSection) personalizedSection.style.display = 'none';
+            }
+        }
+        
+        // 加载热门推荐
+        async function loadTopRatedRecommendations() {
+            const container = document.getElementById('topRatedList');
+            if (!container) return;
+            
+            container.innerHTML = '<div class="loading">加载中...</div>';
+            
+            try {
+                const data = await recommendationAPI.getTopRated(20);
+                if (data && data.results) {
+                    displayRecommendations(container, data.results, 'top-rated');
+                } else {
+                    container.innerHTML = '<div class="loading">暂无推荐</div>';
+                }
+            } catch (error) {
+                container.innerHTML = '<div class="loading">加载失败：' + error.message + '</div>';
+            }
+        }
+        
+        // 加载个人喜好推荐
+        async function loadPersonalizedRecommendations() {
+            const container = document.getElementById('personalizedList');
+            if (!container) return;
+            
+            container.innerHTML = '<div class="loading">加载中...</div>';
+            
+            try {
+                const data = await recommendationAPI.getItemBased(100); // 获取更多以便分页
+                
+                if (data && data.results) {
+                    if (data.results.length === 0) {
+                        container.innerHTML = '<div class="loading">暂无推荐。请先为一些电影评分（≥4分）以获得个性化推荐。</div>';
+                        document.getElementById('personalizedPagination').style.display = 'none';
+                    } else {
+                        personalizedAllResults = data.results;
+                        const pageSize = 20;
+                        const pageResults = personalizedAllResults.slice(0, pageSize);
+                        displayRecommendations(container, pageResults, 'personalized');
+                        
+                        // 显示分页控件
+                        if (personalizedAllResults.length > pageSize) {
+                            displayPersonalizedPagination(1, Math.ceil(personalizedAllResults.length / pageSize));
+                        } else {
+                            document.getElementById('personalizedPagination').style.display = 'none';
+                        }
+                    }
+                } else {
+                    container.innerHTML = '<div class="loading">暂无推荐</div>';
+                    document.getElementById('personalizedPagination').style.display = 'none';
+                }
+            } catch (error) {
+                if (error.message.includes('认证') || error.message.includes('Token')) {
+                    container.innerHTML = '<div class="loading">请先登录以使用个性化推荐功能</div>';
+                } else {
+                    container.innerHTML = '<div class="loading">加载失败：' + error.message + '</div>';
+                }
+            }
+        }
+
+        let personalizedCurrentPage = 1;
+        let personalizedAllResults = [];
+        
+        function displayRecommendations(container, movies, type) {
+            if (!movies || movies.length === 0) {
+                container.innerHTML = '<div class="loading">暂无推荐</div>';
+                return;
+            }
+            
+            container.innerHTML = movies.map(movie => {
+                const movieId = movie.movieId || movie._id;
+                const title = movie.title || '未知电影';
+                const genres = Array.isArray(movie.genres) ? movie.genres.join(' / ') : '';
+                
+                // 修复评分显示bug：只显示实际评分，不显示推荐分数
+                // score是推荐算法的相似度分数，不是电影评分
+                // 应该从movie对象中获取实际的rating字段，或者从后端获取电影详情
+                let rating = null;
+                let ratingCount = 0;
+                
+                // 如果有rating字段且大于0，才显示
+                if (movie.rating && movie.rating > 0) {
+                    rating = movie.rating;
+                } else if (movie.avg && movie.avg > 0) {
+                    rating = movie.avg;
+                    ratingCount = movie.rating_count || 0;
+                }
+                // 不显示score字段，因为那是推荐算法的相似度分数，不是电影评分
+                
+                const plot = movie.plot || '';
+                const year = movie.year || '';
+                
+                // 优先使用CSV中的poster_url（图片网址），如果网络图片加载失败则使用本地poster
+                let posterUrl = '';
+                let fallbackUrl = '';
+                
+                if (movie.poster_url && movie.poster_url.trim()) {
+                    posterUrl = movie.poster_url.trim();
+                }
+                
+                // 设置本地图片作为备用
+                if (movie.poster_local) {
+                    fallbackUrl = `/${movie.poster_local}`;
+                } else if (movieId) {
+                    // 尝试使用movieId查找海报（data目录）
+                    fallbackUrl = `/data/reco_artifacts_2026-01-16/poster/${movieId}.jpg`;
+                }
+                
+                // 如果网络图片存在，使用网络图片，失败时自动切换到本地图片
+                const posterHtml = posterUrl 
+                    ? `<img src="${posterUrl}" alt="${title}" onerror="console.error('网络图片加载失败，切换到本地图片'); this.onerror=null; this.src='${fallbackUrl || ''}'; if (!this.src || this.src === window.location.href) { this.parentElement.innerHTML='<div class=\\'placeholder\\'><div class=\\'placeholder-icon\\'>🎬</div><div>${title}</div></div>'; }">`
+                    : (fallbackUrl 
+                        ? `<img src="${fallbackUrl}" alt="${title}" onerror="this.parentElement.innerHTML='<div class=\\'placeholder\\'><div class=\\'placeholder-icon\\'>🎬</div><div>${title}</div></div>'">`
+                        : `<div class="placeholder"><div class="placeholder-icon">🎬</div><div>${title}</div></div>`);
+                
+                const reason = movie.reason || '';
+                
+                return `
+                    <div class="movie-card" onclick="goToMovieDetail(${movieId})">
+                        <div class="movie-poster">
+                            ${posterHtml}
+                        </div>
+                        <div class="movie-info">
+                            <div class="movie-title" title="${title}">${title}${year ? ` (${year})` : ''}</div>
+                            <div class="movie-genres">${genres}</div>
+                            ${plot ? `<div class="movie-plot">${plot}</div>` : ''}
+                            <div class="movie-rating">
+                                ${rating !== null && rating > 0 ? `
+                                    <span class="star">★</span>
+                                    <span>${rating.toFixed(1)}</span>
+                                    ${ratingCount > 0 ? `<span style="font-size: 12px; color: #999; margin-left: 5px;">(${ratingCount}人评价)</span>` : ''}
+                                ` : `
+                                    <span style="font-size: 13px; color: #999; font-style: italic;">还没有评分等你来</span>
+                                `}
+                            </div>
+                            ${reason ? `<div class="movie-reason" style="font-size: 12px; color: #007722; margin-top: 5px; font-style: italic;">${reason}</div>` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        function displayPersonalizedPagination(currentPage, totalPages) {
+            const pagination = document.getElementById('personalizedPagination');
+            if (!pagination) return;
+            
+            if (totalPages <= 1) {
+                pagination.style.display = 'none';
+                return;
+            }
+            
+            pagination.style.display = 'flex';
+            personalizedCurrentPage = currentPage;
+            
+            let html = '';
+            
+            // 上一页按钮
+            html += `<button class="pagination-btn" ${currentPage === 1 ? 'disabled' : ''} onclick="changePersonalizedPage(${currentPage - 1})">上一页</button>`;
+            
+            // 页码按钮
+            const maxVisible = 5;
+            let startPage = Math.max(1, currentPage - Math.floor(maxVisible / 2));
+            let endPage = Math.min(totalPages, startPage + maxVisible - 1);
+            
+            if (endPage - startPage < maxVisible - 1) {
+                startPage = Math.max(1, endPage - maxVisible + 1);
+            }
+            
+            if (startPage > 1) {
+                html += `<button class="pagination-btn" onclick="changePersonalizedPage(1)">1</button>`;
+                if (startPage > 2) {
+                    html += `<span class="pagination-ellipsis">...</span>`;
+                }
+            }
+            
+            for (let i = startPage; i <= endPage; i++) {
+                html += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" onclick="changePersonalizedPage(${i})">${i}</button>`;
+            }
+            
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) {
+                    html += `<span class="pagination-ellipsis">...</span>`;
+                }
+                html += `<button class="pagination-btn" onclick="changePersonalizedPage(${totalPages})">${totalPages}</button>`;
+            }
+            
+            // 下一页按钮
+            html += `<button class="pagination-btn" ${currentPage === totalPages ? 'disabled' : ''} onclick="changePersonalizedPage(${currentPage + 1})">下一页</button>`;
+            
+            // 跳转输入框
+            html += `
+                <div class="pagination-jump">
+                    <span>跳转到</span>
+                    <input type="number" id="personalizedPageJumpInput" min="1" max="${totalPages}" value="${currentPage}" style="width: 60px; padding: 5px; margin: 0 5px;">
+                    <span>页</span>
+                    <button class="pagination-btn" onclick="jumpToPersonalizedPage()">确定</button>
+                </div>`;
+            
+            pagination.innerHTML = html;
+        }
+        
+        function changePersonalizedPage(page) {
+            const pageSize = 20;
+            const start = (page - 1) * pageSize;
+            const end = start + pageSize;
+            const pageResults = personalizedAllResults.slice(start, end);
+            
+            const container = document.getElementById('personalizedList');
+            displayRecommendations(container, pageResults, 'personalized');
+            displayPersonalizedPagination(page, Math.ceil(personalizedAllResults.length / pageSize));
+            window.scrollTo({ top: container.offsetTop - 100, behavior: 'smooth' });
+        }
+        
+        function jumpToPersonalizedPage() {
+            const input = document.getElementById('personalizedPageJumpInput');
+            if (!input) return;
+            
+            const targetPage = parseInt(input.value);
+            const totalPages = Math.ceil(personalizedAllResults.length / 20);
+            
+            if (isNaN(targetPage) || targetPage < 1) {
+                alert('请输入有效的页码');
+                return;
+            }
+            
+            if (targetPage > totalPages) {
+                alert(`最大页码为 ${totalPages}`);
+                return;
+            }
+            
+            changePersonalizedPage(targetPage);
+        }
+
+        function goToMovieDetail(movieId) {
+            if (guestMode.isGuest()) {
+                guestMode.addView(movieId);
+            }
+            window.location.href = `movie-detail.html?id=${movieId}`;
+        }
+    </script>
+</body>
+</html>
+

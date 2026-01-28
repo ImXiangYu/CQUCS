@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电影推荐 - 发现好电影</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html">电影推荐</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link active">首页</a>
+                <a href="recommendations.html" class="nav-link">推荐</a>
+                <a href="movies.html" class="nav-link">电影搜索</a>
+                <div class="nav-user" id="navUser">
+                    <span class="guest-mode" id="guestMode">游客模式</span>
+                    <a href="login.html" class="btn-login" id="btnLogin">登录</a>
+                    <a href="register.html" class="btn-register" id="btnRegister">注册</a>
+                    <div class="user-menu" id="userMenu" style="display: none;">
+                        <span class="username" id="username"></span>
+                        <a href="#" class="btn-logout" id="btnLogout" style="color: #000000; font-weight: bold;">退出</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="main-content">
+        <!-- 轮播横幅 -->
+        <section class="hero-section">
+            <div class="container">
+                <h1>发现好电影</h1>
+                <p>基于智能推荐算法，为您推荐最合适的电影</p>
+            </div>
+        </section>
+
+        <!-- 热门电影推荐 - 轮播（放大版） -->
+        <section class="section" style="padding: 60px 0;">
+            <div class="container">
+                <h2 class="section-title" style="font-size: 36px; margin-bottom: 40px;">好看电影</h2>
+                <div class="carousel-container" style="max-width: 1400px; margin: 0 auto;">
+                    <div class="carousel-wrapper" id="topRatedCarousel" style="height: 600px; background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('/data/reco_artifacts_2026-01-16/background/351.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                        <div class="carousel-track" id="carouselTrack">
+                            <div class="loading">加载中...</div>
+                        </div>
+                        <button class="carousel-btn carousel-btn-prev" id="carouselPrev">‹</button>
+                        <button class="carousel-btn carousel-btn-next" id="carouselNext">›</button>
+                    </div>
+                    <div class="carousel-indicators" id="carouselIndicators"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 网站介绍 -->
+        <section class="section" style="background: linear-gradient(rgba(10, 10, 15, 0.85), rgba(10, 10, 15, 0.85)), url('/data/reco_artifacts_2026-01-16/background/353.jpg'); background-size: cover; background-position: center; color: #fff; padding: 80px 0; margin-top: 60px;">
+    <div class="container">
+        <div style="max-width: 850px; margin: 0 auto; text-align: center; background: rgba(255, 255, 255, 0.05); padding: 40px; border-radius: 15px; backdrop-filter: blur(5px); border: 1px solid rgba(255, 255, 255, 0.1);">
+            <h2 style="font-size: 42px; margin-bottom: 25px; color: #fff; font-weight: 700; letter-spacing: 2px;">关于我们</h2>
+            <div style="font-size: 18px; line-height: 1.8; color: #e0e0e0;">
+                <p style="margin-bottom: 15px;">欢迎来到电影推荐系统！我们致力于为您提供最优质的电影推荐服务。</p>
+                <p style="margin-bottom: 15px;">通过先进的推荐算法，我们能够根据您的观影历史和偏好，为您推荐最合适的电影。</p>
+                <p style="margin-bottom: 0;">探索电影世界，发现无限可能。让我们一起享受电影带来的精彩体验！</p>
+            </div>
+        </div>
+    </div>
+</section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 电影推荐系统. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cookie.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

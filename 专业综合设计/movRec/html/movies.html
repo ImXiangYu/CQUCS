@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电影搜索 - 电影推荐</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html">电影推荐</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="recommendations.html" class="nav-link">推荐</a>
+                <a href="movies.html" class="nav-link active">电影搜索</a>
+                <div class="nav-user" id="navUser">
+                    <span class="guest-mode" id="guestMode">游客模式</span>
+                    <a href="login.html" class="btn-login" id="btnLogin">登录</a>
+                    <a href="register.html" class="btn-register" id="btnRegister">注册</a>
+                    <div class="user-menu" id="userMenu" style="display: none;">
+                        <span class="username" id="username"></span>
+			<a href="#" class="btn-logout" id="btnLogout" style="color: #000000; font-weight: bold;">退出</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="section">
+                <h2 class="section-title">电影搜索</h2>
+                <div class="filter-bar">
+                    <div class="genre-buttons-container">
+                        <span class="genre-label">类型筛选：</span>
+                        <div class="genre-buttons" id="genreButtons">
+                            <button class="genre-btn active" data-genre="">全部类型</button>
+                        </div>
+                    </div>
+                    <div class="search-box-container">
+                        <div class="search-row">
+                            <input type="text" id="searchKeyword" class="search-input" placeholder="搜索电影名称...">
+                            <input type="text" id="searchDirector" class="search-input" placeholder="搜索导演...">
+                            <input type="text" id="searchActor" class="search-input" placeholder="搜索演员...">
+                            <input type="text" id="searchPlot" class="search-input" placeholder="搜索简介...">
+                            <button id="searchBtn" class="btn-search">搜索</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="movie-grid" id="movieList">
+                    <div class="loading">加载中...</div>
+                </div>
+                <div class="pagination" id="pagination"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cookie.js"></script>
+    <script>
+        let currentPage = 1;
+        let selectedGenres = []; // 改为数组支持多选
+        let currentSearchParams = {
+            keyword: '',
+            director: '',
+            actor: '',
+            plot: '',
+            genres: []
+        };
+
+        // 检查是否需要刷新（评分更新后）
+        function checkRatingUpdate() {
+            const ratingUpdated = localStorage.getItem('ratingUpdated');
+            if (ratingUpdated) {
+                const updateTime = parseInt(ratingUpdated);
+                const now = Date.now();
+                // 如果标记是30秒内设置的，刷新页面
+                if (now - updateTime < 30000) {
+                    localStorage.removeItem('ratingUpdated');
+                    window.location.reload();
+                    return true;
+                } else {
+                    // 超过30秒的标记清除
+                    localStorage.removeItem('ratingUpdated');
+                }
+            }
+            return false;
+        }
+
+        // 处理浏览器后退/前进按钮（pageshow事件）
+        window.addEventListener('pageshow', (event) => {
+            // event.persisted 为 true 表示页面是从缓存中恢复的（如浏览器后退）
+            if (event.persisted) {
+                // 检查是否需要刷新
+                checkRatingUpdate();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            // 检查是否需要刷新（评分更新后）
+            if (checkRatingUpdate()) {
+                return; // 如果刷新了，不继续执行
+            }
+            
+            await loadGenres();
+            await loadMovies();
+            
+            const searchBtn = document.getElementById('searchBtn');
+            const searchKeyword = document.getElementById('searchKeyword');
+            const searchDirector = document.getElementById('searchDirector');
+            const searchActor = document.getElementById('searchActor');
+            const searchPlot = document.getElementById('searchPlot');
+            
+            if (searchBtn) {
+                searchBtn.addEventListener('click', handleSearch);
+            }
+            
+            // 为所有搜索框绑定回车事件
+            [searchKeyword, searchDirector, searchActor, searchPlot].forEach(input => {
+                if (input) {
+                    input.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter') {
+                            handleSearch();
+                        }
+                    });
+                }
+            });
+            
+            // 监听页面可见性变化（从详情页返回时检查）
+            document.addEventListener('visibilitychange', () => {
+                if (!document.hidden) {
+                    // 页面变为可见时检查是否需要刷新
+                    checkRatingUpdate();
+                }
+            });
+        });
+
+        async function loadGenres() {
+            const genreButtons = document.getElementById('genreButtons');
+            if (!genreButtons) return;
+            
+            try {
+                const data = await movieAPI.getGenres();
+                // 只取前10个类型
+                const genres = data.genres.slice(0, 10);
+                
+                genres.forEach(genre => {
+                    const btn = document.createElement('button');
+                    btn.className = 'genre-btn';
+                    btn.textContent = genre;
+                    btn.dataset.genre = genre;
+                    btn.addEventListener('click', () => toggleGenre(genre, btn));
+                    genreButtons.appendChild(btn);
+                });
+            } catch (error) {
+                console.error('加载类型失败:', error);
+                // 如果API失败，使用硬编码的前10个类型
+                const hardcodedGenres = ['Musical', 'War', 'Crime', 'Romance', 'Fantasy', 'Drama', 'Music', 'Sci-Fi', 'Action', 'Comedy', 'Biography', 'Family', 'Horror', 'Short', 'Documentary', 'Film-Noir', 'Animation', 'Adventure', 'News', 'Mystery', 'Sport', 'History', 'Thriller', 'Western'];
+                hardcodedGenres.forEach(genre => {
+                    const btn = document.createElement('button');
+                    btn.className = 'genre-btn';
+                    btn.textContent = genre;
+                    btn.dataset.genre = genre;
+                    btn.addEventListener('click', () => toggleGenre(genre, btn));
+                    genreButtons.appendChild(btn);
+                });
+            }
+        }
+
+        function toggleGenre(genre, btn) {
+            if (genre === '') {
+                // 点击"全部类型"时，清除所有选择
+                selectedGenres = [];
+                document.querySelectorAll('.genre-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            } else {
+                // 切换其他类型
+                const allBtn = document.querySelector('.genre-btn[data-genre=""]');
+                if (allBtn) allBtn.classList.remove('active');
+                
+                if (btn.classList.contains('active')) {
+                    btn.classList.remove('active');
+                    selectedGenres = selectedGenres.filter(g => g !== genre);
+                } else {
+                    btn.classList.add('active');
+                    selectedGenres.push(genre);
+                }
+                
+                // 如果没有任何类型被选中，激活"全部类型"
+                if (selectedGenres.length === 0) {
+                    const allBtn = document.querySelector('.genre-btn[data-genre=""]');
+                    if (allBtn) allBtn.classList.add('active');
+                }
+            }
+            
+            // 类型筛选改变时，更新搜索参数并重新搜索
+            currentSearchParams.genres = selectedGenres;
+            currentPage = 1;
+            loadMovies();
+        }
+
+        async function loadMovies() {
+            const container = document.getElementById('movieList');
+            if (!container) return;
+            
+            container.innerHTML = '<div class="loading">加载中...</div>';
+            
+            try {
+                let data;
+                // 检查是否有任何搜索条件
+                const hasSearch = currentSearchParams.keyword || currentSearchParams.director || 
+                                 currentSearchParams.actor || currentSearchParams.plot || 
+                                 selectedGenres.length > 0;
+                
+                if (hasSearch) {
+                    // 搜索模式 - 联合搜索
+                    const searchParams = {
+                        keyword: currentSearchParams.keyword,
+                        director: currentSearchParams.director,
+                        actor: currentSearchParams.actor,
+                        plot: currentSearchParams.plot,
+                        genres: selectedGenres
+                    };
+                    
+                    console.log(`搜索模式 - 搜索参数:`, searchParams);
+                    data = await movieAPI.search(searchParams, currentPage, 20);
+                    console.log(`搜索返回 ${data.results ? data.results.length : 0} 部电影，总数: ${data.count}`);
+                } else {
+                    // 列表模式，支持多类型严格筛选
+                    if (selectedGenres.length > 0) {
+                        console.log(`列表模式 - 类型筛选: ${selectedGenres.join(', ')}`);
+                        // 多类型严格筛选：需要获取所有数据来筛选，但后端只返回当前页
+                        // 所以我们需要多次请求或一次性获取所有数据
+                        // 为了性能，先获取第一页看总数，然后根据总数决定策略
+                        const firstPageData = await movieAPI.getList(1, 20, '');
+                        const totalMovies = firstPageData.count;
+                        
+                        // 如果总数不大，可以获取所有数据筛选
+                        if (totalMovies <= 1000) {
+                            // 获取所有数据（分多次请求）
+                            let allMovies = [];
+                            const pagesNeeded = Math.ceil(totalMovies / 20);
+                            for (let p = 1; p <= pagesNeeded; p++) {
+                                const pageData = await movieAPI.getList(p, 20, '');
+                                allMovies = allMovies.concat(pageData.results);
+                            }
+                            
+                            // 严格筛选
+                            const filtered = allMovies.filter(movie => {
+                                const movieGenres = Array.isArray(movie.genres) ? movie.genres : [];
+                                const movieGenresLower = movieGenres.map(g => String(g).toLowerCase());
+                                return selectedGenres.every(selected => 
+                                    movieGenresLower.includes(selected.toLowerCase())
+                                );
+                            });
+                            
+                            data = {
+                                results: filtered,
+                                count: filtered.length,
+                                page_size: 20
+                            };
+                            console.log(`严格类型筛选找到 ${data.count} 部电影`);
+                            
+                            // 分页
+                            const start = (currentPage - 1) * 20;
+                            const end = start + 20;
+                            data.results = data.results.slice(start, end);
+                        } else {
+                            // 如果总数太大，只获取当前页（无法严格筛选所有数据）
+                            data = await movieAPI.getList(currentPage, 20, '');
+                            // 前端过滤当前页
+                            data.results = data.results.filter(movie => {
+                                const movieGenres = Array.isArray(movie.genres) ? movie.genres : [];
+                                const movieGenresLower = movieGenres.map(g => String(g).toLowerCase());
+                                return selectedGenres.every(selected => 
+                                    movieGenresLower.includes(selected.toLowerCase())
+                                );
+                            });
+                            data.count = data.results.length;
+                        }
+                    } else {
+                        data = await movieAPI.getList(currentPage, 20, '');
+                    }
+                }
+                
+                // 保存总数到容器，供跳转功能使用
+                if (container) {
+                    container.dataset.total = data.count;
+                }
+                
+                displayMovies(container, data.results);
+                displayPagination(data.count, data.page_size || 20);
+            } catch (error) {
+                console.error('加载电影失败:', error);
+                container.innerHTML = '<div class="loading">加载失败：' + error.message + '</div>';
+            }
+        }
+
+        function displayMovies(container, movies) {
+            if (!movies || movies.length === 0) {
+                container.innerHTML = '<div class="loading">暂无电影</div>';
+                return;
+            }
+            
+            container.innerHTML = movies.map(movie => {
+                const movieId = movie.movieId || movie._id;
+                const title = movie.title || '未知电影';
+                const genres = Array.isArray(movie.genres) ? movie.genres.join(' / ') : '';
+                const plot = movie.plot || '';
+                const year = movie.year || '';
+                // 获取评分，可能来自rating、avg或score字段
+                let rating = null;
+                let ratingCount = 0;
+                if (movie.rating && movie.rating > 0) {
+                    rating = movie.rating;
+                } else if (movie.avg && movie.avg > 0) {
+                    rating = movie.avg;
+                    ratingCount = movie.rating_count || 0;
+                } else if (movie.score && movie.score > 0) {
+                    rating = movie.score;
+                }
+                
+                // 优先使用CSV中的poster_url（图片网址），如果网络图片加载失败则使用本地poster
+                let posterUrl = '';
+                let fallbackUrl = '';
+                
+                if (movie.poster_url && movie.poster_url.trim()) {
+                    posterUrl = movie.poster_url.trim();
+                }
+                
+                // 设置本地图片作为备用
+                if (movie.poster_local) {
+                    fallbackUrl = `/${movie.poster_local}`;
+                } else if (movieId) {
+                    // 尝试使用movieId查找海报（data目录）
+                    fallbackUrl = `/data/reco_artifacts_2026-01-16/poster/${movieId}.jpg`;
+                }
+                
+                // 如果网络图片存在，使用网络图片，失败时自动切换到本地图片
+                const posterHtml = posterUrl 
+                    ? `<img src="${posterUrl}" alt="${title}" onerror="console.error('网络图片加载失败，切换到本地图片'); this.onerror=null; this.src='${fallbackUrl || ''}'; if (!this.src || this.src === window.location.href) { this.parentElement.innerHTML='<div class=\\'placeholder\\'><div class=\\'placeholder-icon\\'>🎬</div><div>${title}</div></div>'; }">`
+                    : (fallbackUrl 
+                        ? `<img src="${fallbackUrl}" alt="${title}" onerror="this.parentElement.innerHTML='<div class=\\'placeholder\\'><div class=\\'placeholder-icon\\'>🎬</div><div>${title}</div></div>'">`
+                        : `<div class="placeholder"><div class="placeholder-icon">🎬</div><div>${title}</div></div>`);
+                
+                return `
+                    <div class="movie-card" onclick="goToMovieDetail(${movieId})">
+                        <div class="movie-poster">
+                            ${posterHtml}
+                        </div>
+                        <div class="movie-info">
+                            <div class="movie-title" title="${title}">${title}${year ? ` (${year})` : ''}</div>
+                            <div class="movie-genres">${genres}</div>
+                            ${plot ? `<div class="movie-plot">${plot}</div>` : ''}
+                            <div class="movie-rating">
+                                ${rating !== null && rating > 0 ? `
+                                    <span class="star">★</span>
+                                    <span>${rating.toFixed(1)}</span>
+                                    ${ratingCount > 0 ? `<span style="font-size: 12px; color: #999; margin-left: 5px;">(${ratingCount}人评价)</span>` : ''}
+                                ` : `
+                                    <span style="font-size: 13px; color: #999; font-style: italic;">还没有评分等你来</span>
+                                `}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function displayPagination(total, pageSize) {
+            const pagination = document.getElementById('pagination');
+            if (!pagination) return;
+            
+            const totalPages = Math.ceil(total / pageSize);
+            if (totalPages <= 1) {
+                pagination.innerHTML = '';
+                return;
+            }
+            
+            let html = '';
+            // 上一页按钮
+            html += `<button class="pagination-btn" ${currentPage === 1 ? 'disabled' : ''} onclick="changePage(${currentPage - 1})">上一页</button>`;
+            
+            // 页码按钮（显示当前页前后各2页）
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
+                    html += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
+                } else if (i === currentPage - 3 || i === currentPage + 3) {
+                    html += `<button class="pagination-btn" disabled>...</button>`;
+                }
+            }
+            
+            // 下一页按钮
+            html += `<button class="pagination-btn" ${currentPage === totalPages ? 'disabled' : ''} onclick="changePage(${currentPage + 1})">下一页</button>`;
+            
+            // 跳转输入框
+            html += `<div class="pagination-jump">
+                <span>选择页数：</span>
+                <input type="number" id="pageJumpInput" min="1" max="${totalPages}" value="${currentPage}" style="width: 60px; padding: 5px; margin: 0 5px; border: 1px solid #ddd; border-radius: 4px;">
+                <button class="pagination-btn" onclick="jumpToPage()">确定</button>
+            </div>`;
+            
+            pagination.innerHTML = html;
+            
+            // 绑定输入框回车事件
+            const pageInput = document.getElementById('pageJumpInput');
+            if (pageInput) {
+                pageInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        jumpToPage();
+                    }
+                });
+            }
+        }
+
+        function jumpToPage() {
+            const input = document.getElementById('pageJumpInput');
+            if (!input) return;
+            
+            const targetPage = parseInt(input.value);
+            if (isNaN(targetPage) || targetPage < 1) {
+                alert('请输入有效的页码');
+                return;
+            }
+            
+            // 获取总页数（从当前显示的数据计算）
+            const container = document.getElementById('movieList');
+            const totalMovies = parseInt(container?.dataset.total || 0);
+            const pageSize = 20;
+            const totalPages = Math.ceil(totalMovies / pageSize);
+            
+            if (targetPage > totalPages) {
+                alert(`最大页码为 ${totalPages}`);
+                return;
+            }
+            
+            changePage(targetPage);
+        }
+
+        function changePage(page) {
+            currentPage = page;
+            loadMovies();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function handleSearch() {
+            const searchKeyword = document.getElementById('searchKeyword');
+            const searchDirector = document.getElementById('searchDirector');
+            const searchActor = document.getElementById('searchActor');
+            const searchPlot = document.getElementById('searchPlot');
+            
+            // 更新搜索参数
+            currentSearchParams = {
+                keyword: searchKeyword ? searchKeyword.value.trim() : '',
+                director: searchDirector ? searchDirector.value.trim() : '',
+                actor: searchActor ? searchActor.value.trim() : '',
+                plot: searchPlot ? searchPlot.value.trim() : '',
+                genres: selectedGenres  // 类型筛选也作为搜索条件
+            };
+            
+            currentPage = 1;
+            
+            console.log(`handleSearch - 搜索参数:`, currentSearchParams);
+            loadMovies();
+        }
+
+        function goToMovieDetail(movieId) {
+            if (guestMode.isGuest()) {
+                guestMode.addView(movieId);
+            }
+            window.location.href = `movie-detail.html?id=${movieId}`;
+        }
+    </script>
+</body>
+</html>
+

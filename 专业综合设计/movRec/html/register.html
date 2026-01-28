@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册 - 电影推荐</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html">电影推荐</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link active">首页</a>
+                <a href="recommendations.html" class="nav-link">推荐</a>
+                <a href="movies.html" class="nav-link">电影搜索</a>
+                <div class="nav-user" id="navUser">
+                    <span class="guest-mode" id="guestMode">游客模式</span>
+                    <a href="login.html" class="btn-login" id="btnLogin">登录</a>
+                    <a href="register.html" class="btn-register" id="btnRegister">注册</a>
+                    <div class="user-menu" id="userMenu" style="display: none;">
+                        <span class="username" id="username"></span>
+			<a href="#" class="btn-logout" id="btnLogout" style="color: #000000; font-weight: bold;">退出</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="auth-container">
+            <h2>注册</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="username">用户名</label>
+                    <input type="text" id="username" name="username" required 
+                           placeholder="3-32位字母、数字或下划线">
+                    <div class="field-hint" id="usernameHint"></div>
+                </div>
+                <div class="form-group">
+                    <label for="email">邮箱</label>
+                    <input type="email" id="email" name="email" required 
+                           placeholder="例如：example@gmail.com">
+                    <div class="field-hint" id="emailHint"></div>
+                </div>
+                <div class="form-group">
+                    <label for="password">密码</label>
+                    <input type="password" id="password" name="password" required minlength="6"
+                           placeholder="至少6位字符">
+                    <div class="field-hint" id="passwordHint"></div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">确认密码</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required
+                           placeholder="请再次输入密码">
+                    <div class="field-hint" id="confirmPasswordHint"></div>
+                </div>
+                <button type="submit" class="btn-submit">注册</button>
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+                <div id="successMessage" class="success-message" style="display: none;"></div>
+            </form>
+            <div class="auth-link">
+                已有账号？<a href="login.html">立即登录</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        // 确保DOM加载完成后再绑定事件
+        document.addEventListener('DOMContentLoaded', function() {
+            // 验证函数
+            function validateUsername(username) {
+                if (!username) {
+                    return '用户名不能为空';
+                }
+                if (username.length < 3) {
+                    return '用户名至少需要3个字符';
+                }
+                if (username.length > 32) {
+                    return '用户名不能超过32个字符';
+                }
+                if (!/^[a-zA-Z0-9_]+$/.test(username)) {
+                    return '用户名只能包含字母、数字和下划线';
+                }
+                return '';
+            }
+
+            function validateEmail(email) {
+                if (!email) {
+                    return '邮箱不能为空';
+                }
+                if (!email.includes('@')) {
+                    return '邮箱格式不正确，缺少@符号';
+                }
+                const parts = email.split('@');
+                if (parts.length !== 2) {
+                    return '邮箱格式不正确，只能有一个@符号';
+                }
+                if (!parts[0] || !parts[1]) {
+                    return '邮箱格式不正确，@前后不能为空';
+                }
+                if (!parts[1].includes('.')) {
+                    return '邮箱格式不正确，请输入正确的邮箱后缀（如：@gmail.com、@qq.com）';
+                }
+                const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                if (!emailRegex.test(email)) {
+                    return '邮箱格式不正确，请输入正确的邮箱格式（如：example@gmail.com）';
+                }
+                return '';
+            }
+
+            function validatePassword(password) {
+                if (!password) {
+                    return '密码不能为空';
+                }
+                if (password.length < 6) {
+                    return '密码长度至少6位';
+                }
+                return '';
+            }
+
+            function validateConfirmPassword(password, confirmPassword) {
+                if (!confirmPassword) {
+                    return '请确认密码';
+                }
+                if (password !== confirmPassword) {
+                    return '两次输入的密码不一致';
+                }
+                return '';
+            }
+
+            function showHint(elementId, message, isError = false) {
+                const hint = document.getElementById(elementId);
+                if (hint) {
+                    hint.textContent = message;
+                    hint.className = 'field-hint' + (isError ? ' error' : '');
+                    hint.style.display = message ? 'block' : 'none';
+                }
+            }
+
+            // 实时验证 - 从表单内获取元素，避免与导航栏冲突
+            const registerForm = document.getElementById('registerForm');
+            const usernameInput = registerForm.querySelector('#username');
+            const emailInput = registerForm.querySelector('#email');
+            const passwordInput = registerForm.querySelector('#password');
+            const confirmPasswordInput = registerForm.querySelector('#confirmPassword');
+            
+            if (usernameInput) {
+                usernameInput.addEventListener('blur', function() {
+                    const error = validateUsername(this.value.trim());
+                    showHint('usernameHint', error, !!error);
+                });
+                
+                usernameInput.addEventListener('input', function() {
+                    if (this.value.trim()) {
+                        showHint('usernameHint', '');
+                    }
+                });
+            }
+            
+            if (emailInput) {
+                emailInput.addEventListener('blur', function() {
+                    const error = validateEmail(this.value.trim());
+                    showHint('emailHint', error, !!error);
+                });
+                
+                emailInput.addEventListener('input', function() {
+                    if (this.value.trim()) {
+                        showHint('emailHint', '');
+                    }
+                });
+            }
+            
+            if (passwordInput) {
+                passwordInput.addEventListener('blur', function() {
+                    const error = validatePassword(this.value);
+                    showHint('passwordHint', error, !!error);
+                });
+                
+                passwordInput.addEventListener('input', function() {
+                    showHint('passwordHint', '');
+                    if (confirmPasswordInput) {
+                        showHint('confirmPasswordHint', '');
+                    }
+                });
+            }
+            
+            if (confirmPasswordInput) {
+                confirmPasswordInput.addEventListener('blur', function() {
+                    const password = passwordInput ? passwordInput.value : '';
+                    const error = validateConfirmPassword(password, this.value);
+                    showHint('confirmPasswordHint', error, !!error);
+                });
+                
+                confirmPasswordInput.addEventListener('input', function() {
+                    showHint('confirmPasswordHint', '');
+                });
+            }
+
+            // 表单提交
+            registerForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const errorMsg = document.getElementById('errorMessage');
+                const successMsg = document.getElementById('successMessage');
+                const submitBtn = e.target.querySelector('.btn-submit');
+                errorMsg.style.display = 'none';
+                successMsg.style.display = 'none';
+                
+                // 清除所有提示
+                ['usernameHint', 'emailHint', 'passwordHint', 'confirmPasswordHint'].forEach(id => {
+                    showHint(id, '');
+                });
+                
+                // 从表单内获取输入框，避免与导航栏中的元素冲突
+                const username = usernameInput ? usernameInput.value.trim() : '';
+                const email = emailInput ? emailInput.value.trim() : '';
+                const password = passwordInput ? passwordInput.value : '';
+                const confirmPassword = confirmPasswordInput ? confirmPasswordInput.value : '';
+            
+            // 验证所有字段
+            let hasError = false;
+            const usernameError = validateUsername(username);
+            if (usernameError) {
+                showHint('usernameHint', usernameError, true);
+                hasError = true;
+            }
+            
+            const emailError = validateEmail(email);
+            if (emailError) {
+                showHint('emailHint', emailError, true);
+                hasError = true;
+            }
+            
+            const passwordError = validatePassword(password);
+            if (passwordError) {
+                showHint('passwordHint', passwordError, true);
+                hasError = true;
+            }
+            
+            const confirmPasswordError = validateConfirmPassword(password, confirmPassword);
+            if (confirmPasswordError) {
+                showHint('confirmPasswordHint', confirmPasswordError, true);
+                hasError = true;
+            }
+            
+            if (hasError) {
+                errorMsg.textContent = '请检查输入格式';
+                errorMsg.style.display = 'block';
+                return;
+            }
+            
+            // 禁用提交按钮
+            submitBtn.disabled = true;
+            submitBtn.textContent = '注册中...';
+            
+            try {
+                const result = await auth.register(username, email, password);
+                
+                successMsg.textContent = '注册成功！正在跳转...';
+                successMsg.style.display = 'block';
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1500);
+            } catch (error) {
+                // 处理后端返回的错误信息
+                let errorText = '注册失败，请稍后重试';
+                if (error.message) {
+                    // 清理错误信息，移除可能的乱码
+                    errorText = error.message.replace(/[^\u4e00-\u9fa5a-zA-Z0-9\s@._-]/g, '').trim();
+                    if (!errorText) {
+                        errorText = '注册失败，请稍后重试';
+                    }
+                }
+                errorMsg.textContent = errorText;
+                errorMsg.style.display = 'block';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = '注册';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

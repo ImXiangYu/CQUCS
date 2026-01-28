@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - 电影推荐</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html">电影推荐</a>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link active">首页</a>
+                <a href="recommendations.html" class="nav-link">推荐</a>
+                <a href="movies.html" class="nav-link">电影搜索</a>
+                <div class="nav-user" id="navUser">
+                    <span class="guest-mode" id="guestMode">游客模式</span>
+                    <a href="login.html" class="btn-login" id="btnLogin">登录</a>
+                    <a href="register.html" class="btn-register" id="btnRegister">注册</a>
+                    <div class="user-menu" id="userMenu" style="display: none;">
+                        <span class="username" id="username"></span>
+			<a href="#" class="btn-logout" id="btnLogout" style="color: #000000; font-weight: bold;">退出</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="auth-container">
+            <h2>登录</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">用户名</label>
+                    <input type="text" id="username" name="username" required 
+                           placeholder="请输入用户名">
+                    <div class="field-hint" id="usernameHint"></div>
+                </div>
+                <div class="form-group">
+                    <label for="password">密码</label>
+                    <input type="password" id="password" name="password" required
+                           placeholder="请输入密码">
+                    <div class="field-hint" id="passwordHint"></div>
+                </div>
+                <button type="submit" class="btn-submit">登录</button>
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+            </form>
+            <div class="auth-link">
+                还没有账号？<a href="register.html">立即注册</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        // 确保DOM加载完成后再绑定事件
+        document.addEventListener('DOMContentLoaded', function() {
+            function showHint(elementId, message, isError = false) {
+                const hint = document.getElementById(elementId);
+                if (hint) {
+                    hint.textContent = message;
+                    hint.className = 'field-hint' + (isError ? ' error' : '');
+                    hint.style.display = message ? 'block' : 'none';
+                }
+            }
+
+            // 实时验证 - 从表单内获取元素，避免与导航栏冲突
+            const loginForm = document.getElementById('loginForm');
+            const usernameInput = loginForm.querySelector('#username');
+            const passwordInput = loginForm.querySelector('#password');
+            
+            if (usernameInput) {
+                usernameInput.addEventListener('blur', function() {
+                    if (!this.value.trim()) {
+                        showHint('usernameHint', '请输入用户名', true);
+                    } else {
+                        showHint('usernameHint', '');
+                    }
+                });
+                
+                usernameInput.addEventListener('input', function() {
+                    if (this.value.trim()) {
+                        showHint('usernameHint', '');
+                    }
+                });
+            }
+            
+            if (passwordInput) {
+                passwordInput.addEventListener('blur', function() {
+                    if (!this.value) {
+                        showHint('passwordHint', '请输入密码', true);
+                    } else {
+                        showHint('passwordHint', '');
+                    }
+                });
+                
+                passwordInput.addEventListener('input', function() {
+                    if (this.value) {
+                        showHint('passwordHint', '');
+                    }
+                });
+            }
+
+            // 表单提交
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const errorMsg = document.getElementById('errorMessage');
+                const submitBtn = e.target.querySelector('.btn-submit');
+                errorMsg.style.display = 'none';
+                
+                // 清除所有提示
+                showHint('usernameHint', '');
+                showHint('passwordHint', '');
+                
+                // 从表单内获取输入框，避免与导航栏中的元素冲突
+                const usernameInput = loginForm.querySelector('#username');
+                const passwordInput = loginForm.querySelector('#password');
+                const username = usernameInput ? usernameInput.value.trim() : '';
+                const password = passwordInput ? passwordInput.value : '';
+                
+                // 验证输入
+                let hasError = false;
+                if (!username) {
+                    showHint('usernameHint', '请输入用户名', true);
+                    hasError = true;
+                }
+                if (!password) {
+                    showHint('passwordHint', '请输入密码', true);
+                    hasError = true;
+                }
+                
+                if (hasError) {
+                    errorMsg.textContent = '请填写所有字段';
+                    errorMsg.style.display = 'block';
+                    return;
+                }
+                
+                // 禁用提交按钮
+                submitBtn.disabled = true;
+                submitBtn.textContent = '登录中...';
+                
+                try {
+                    const result = await auth.login(username, password);
+                    
+                    // 登录成功，跳转
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const redirect = urlParams.get('redirect') || 'index.html';
+                    window.location.href = redirect;
+                } catch (error) {
+                    // 处理后端返回的错误信息
+                    let errorText = '登录失败，请检查用户名和密码';
+                    if (error.message) {
+                        // 清理错误信息，移除可能的乱码
+                        errorText = error.message.replace(/[^\u4e00-\u9fa5a-zA-Z0-9\s@._-]/g, '').trim();
+                        if (!errorText) {
+                            errorText = '登录失败，请检查用户名和密码';
+                        }
+                    }
+                    errorMsg.textContent = errorText;
+                    errorMsg.style.display = 'block';
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = '登录';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

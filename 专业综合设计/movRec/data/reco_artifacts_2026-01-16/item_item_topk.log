@@ -1,0 +1,75 @@
+26/01/16 10:56:23 WARN Utils: Your hostname, ecs-239d-cc78 resolves to a loopback address: 127.0.1.1; using 192.168.0.237 instead (on interface eth0)
+26/01/16 10:56:23 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+26/01/16 10:56:24 INFO SparkContext: Running Spark version 3.5.1
+26/01/16 10:56:24 INFO SparkContext: OS info Linux, 6.8.0-87-generic, amd64
+26/01/16 10:56:24 INFO SparkContext: Java version 17.0.17
+26/01/16 10:56:24 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/01/16 10:56:24 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in mesos/standalone/kubernetes and LOCAL_DIRS in YARN).
+26/01/16 10:56:24 INFO ResourceUtils: ==============================================================
+26/01/16 10:56:24 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/01/16 10:56:24 INFO ResourceUtils: ==============================================================
+26/01/16 10:56:24 INFO SparkContext: Submitted application: item_item_topk
+26/01/16 10:56:24 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/01/16 10:56:24 INFO ResourceProfile: Limiting resource is cpu
+26/01/16 10:56:24 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/01/16 10:56:24 INFO SecurityManager: Changing view acls to: root
+26/01/16 10:56:24 INFO SecurityManager: Changing modify acls to: root
+26/01/16 10:56:24 INFO SecurityManager: Changing view acls groups to: 
+26/01/16 10:56:24 INFO SecurityManager: Changing modify acls groups to: 
+26/01/16 10:56:24 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root; groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY
+26/01/16 10:56:24 INFO Utils: Successfully started service 'sparkDriver' on port 40553.
+26/01/16 10:56:24 INFO SparkEnv: Registering MapOutputTracker
+26/01/16 10:56:24 INFO SparkEnv: Registering BlockManagerMaster
+26/01/16 10:56:24 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+26/01/16 10:56:24 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/01/16 10:56:24 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/01/16 10:56:24 INFO DiskBlockManager: Created local directory at /root/reco/tmp/spark/blockmgr-16ec41ba-f1f6-4d3e-879b-16be2f851817
+26/01/16 10:56:24 INFO MemoryStore: MemoryStore started with capacity 28.6 GiB
+26/01/16 10:56:24 INFO SparkEnv: Registering OutputCommitCoordinator
+26/01/16 10:56:24 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+26/01/16 10:56:24 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+26/01/16 10:56:24 INFO Executor: Starting executor ID driver on host 192.168.0.237
+26/01/16 10:56:24 INFO Executor: OS info Linux, 6.8.0-87-generic, amd64
+26/01/16 10:56:24 INFO Executor: Java version 17.0.17
+26/01/16 10:56:24 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+26/01/16 10:56:24 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@10b387 for default.
+26/01/16 10:56:24 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 33669.
+26/01/16 10:56:24 INFO NettyBlockTransferService: Server created on 192.168.0.237:33669
+26/01/16 10:56:24 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/01/16 10:56:24 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 192.168.0.237, 33669, None)
+26/01/16 10:56:24 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.0.237:33669 with 28.6 GiB RAM, BlockManagerId(driver, 192.168.0.237, 33669, None)
+26/01/16 10:56:24 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 192.168.0.237, 33669, None)
+26/01/16 10:56:24 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 192.168.0.237, 33669, None)
+Output: data/model/item_similarity_topk.parquet
++-----+
+| rows|
++-----+
+|89280|
++-----+
+
++-------+---------------+------------------+------------+
+|movieId|similar_movieId|similarity        |common_users|
++-------+---------------+------------------+------------+
+|111360 |694            |1.0000000000000002|3           |
+|105213 |2660           |1.0000000000000002|2           |
+|52604  |30             |1.0000000000000002|2           |
+|381    |161922         |1.0000000000000002|2           |
+|2686   |26152          |1.0000000000000002|2           |
+|105213 |3835           |1.0000000000000002|3           |
+|81788  |4557           |1.0000000000000002|2           |
+|50685  |270            |1.0000000000000002|2           |
+|110591 |2796           |1.0000000000000002|3           |
+|50685  |2498           |1.0000000000000002|2           |
+|52604  |631            |1.0000000000000002|2           |
+|105213 |2356           |1.0000000000000002|2           |
+|4990   |3812           |1.0000000000000002|2           |
+|50685  |3412           |1.0000000000000002|2           |
+|4220   |453            |1.0000000000000002|3           |
+|105213 |122            |1.0000000000000002|2           |
+|3067   |156609         |1.0000000000000002|2           |
+|86781  |4231           |1.0000000000000002|2           |
+|3068   |74688          |1.0000000000000002|2           |
+|7293   |4424           |1.0000000000000002|2           |
++-------+---------------+------------------+------------+
+only showing top 20 rows
+
